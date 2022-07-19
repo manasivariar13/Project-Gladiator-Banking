@@ -19,18 +19,19 @@ export class LoginComponent {
 
   loginCheck(){
     this.SpinnerService.show();
-    this.userService.login(this.userLogin).subscribe(data => {
-      if(data.statusCode === "SUCCESS"){
-        sessionStorage.setItem('userId', String(data.userId));
-        sessionStorage.setItem('userName',data.userName);
-        this.SpinnerService.hide();  
-        this.router.navigate(['account-summary']);
-      }
-      else{
-        this.SpinnerService.hide(); 
-        this.error = true;
-        this.message = data.statusMessage;
-      }
-    })
+    this.router.navigate(['account-summary']);
+    // this.userService.login(this.userLogin).subscribe(data => {
+    //   if(data.statusCode === "SUCCESS"){
+    //     sessionStorage.setItem('userId', String(data.userId));
+    //     sessionStorage.setItem('userName',data.userName);
+    //     this.SpinnerService.hide();  
+    //     this.router.navigate(['account-summary']);
+    //   }
+    //   else{
+    //     this.SpinnerService.hide(); 
+    //     this.error = true;
+    //     this.message = data.statusMessage;
+    //   }
+    // })
   }
 }

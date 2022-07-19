@@ -11,13 +11,13 @@ body {
 }
 
 .wrapper {
-    width: 380px;
+    width: 30vw;
     float: center;
     background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);
     border: .2rem solid black;
     margin: 28px 50px;
     align-self: center;
-    margin-left:  440px;
+    margin-left:  35vw;
     margin-right:   auto;
     border-radius: 10px;
     padding: 14px;
@@ -38,4 +38,9 @@ input[type="text"], input[type="password"] {
 
 .forgot-options{
     padding-top: 10px;
+}
+
+.error {
+    color: white;
+    font-size: 12px;
 }
