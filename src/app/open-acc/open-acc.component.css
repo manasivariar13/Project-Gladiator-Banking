@@ -1,6 +1,6 @@
 .header {
     overflow: hidden;
-    background-image: linear-gradient(to right, #adb0c5, #d3dbe0);
+    background-image: linear-gradient(to right, #861F41, #e06890);
     padding: 10px;
     width: 100%;
     top: 0;
@@ -9,7 +9,7 @@
   
   .header a {
     float: left;
-    color: rgb(58, 56, 56);
+    color: white;
     text-align: center;
     padding: 12px;
     text-decoration: none;
@@ -30,15 +30,15 @@
     margin-left: 90px;
 }
 input{
-    border: 1px solid #428BCA;
+    border: 1px solid black;
 }
 .card{
-    background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
+    background-image: linear-gradient(to right, #e06890,#861F41 );
    
 }
 .modal-content{
-  background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
-    border: .2rem solid #428BCA;
+  background-image: linear-gradient(to right, #e06890,#861F41);
+    border: .2rem solid black;
 }
 .pos{
     margin-left: 10px;
