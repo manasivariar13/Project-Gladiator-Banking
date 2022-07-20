@@ -1,9 +1,9 @@
 <div class="text-center">
     <img src="/assets/images/MpsasLogo.png" alt="MpsasLogo" width="60" height="60">
 </div>
-<div class="text-center" ><a [routerLink]="['/home']"><button class="btn btn-primary" type="submit" style="width: 100%; background: black;border: white;">Home</button></a></div>
+<div class="text-center" ><a [routerLink]="['/home']"><button class="btn btn-primary" type="submit" style="width: 100%; background-image: linear-gradient(to right, #861F41, #e06890);;border: white;">Home</button></a></div>
 <div class="wrapper container" style="width: 28%;">
-    <p class="h3" style="color: white; text-align: center;text-shadow: 0 0 5px black, 0 0 5px black;">ADMIN LOGIN</p>
+    <p class="h3" style="color: white; text-align: center;text-shadow: 0 0 5px rgb(222, 88, 88), 0 0 5px black;">ADMIN LOGIN</p>
     <br>
     <p>Please fill in your credentials to login.</p>
     <form (ngSubmit)="adminLoginForm.valid && loginCheck()" #adminLoginForm="ngForm">
