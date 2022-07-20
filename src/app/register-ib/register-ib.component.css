@@ -6,8 +6,8 @@ body {
 
 .wrapper {
     width: 500px;
-    background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
-    border: .2rem solid #428BCA;
+    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);
+    border: .2rem solid black;
     margin-top: 10px;
     margin-bottom: 20px;
     border-radius: 10px;
@@ -28,7 +28,7 @@ a:hover {
 }
 
 input{
-  border: 1px solid #428BCA;
+  border: 1px solid #0b0b0b;
 }
 
 .forgot-options{
@@ -36,7 +36,7 @@ input{
 }
 .header {
     overflow: hidden;
-    background-image: linear-gradient(to right, #adb0c5, #d3dbe0);
+    background-image: linear-gradient(to right, #861F41, #e06890);
     padding: 10px;
     width: 100%;
     top: 0;
@@ -45,7 +45,7 @@ input{
   
   .header a {
     float: left;
-    color: rgb(58, 56, 56);
+    color: white;
     text-align: center;
     padding: 12px;
     text-decoration: none;

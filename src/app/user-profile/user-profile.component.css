@@ -4,14 +4,15 @@
     padding: 0%;
     width: 50%;
     position: relative;
-    border: .2rem solid #428BCA;
+    border: .2rem solid black;
 }
 
 .card{
     margin-top: 0px;
     padding: 0px;
-    background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
+    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);    
     border-style: none;
+    color: white;
     
 }
 

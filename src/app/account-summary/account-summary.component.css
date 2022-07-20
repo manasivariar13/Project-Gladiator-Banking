@@ -17,13 +17,14 @@ body {
     position: relative;
     margin: auto;
     padding: 0%;
-    border: .2rem solid #428BCA;
+    border: .2rem solid black;
 }
 
 .card{
    
-    background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
+    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);    
     border-style: none;
+    color: white;
 
 }
 .card-header{

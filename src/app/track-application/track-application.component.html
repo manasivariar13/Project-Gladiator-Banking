@@ -1,14 +1,14 @@
 <div class="text-center">
-    <img src="/assets/images/hfdc-bank-logo.png" alt="hfdc-bank-logo" width="160" height="160">
+    <img src="/assets/images/MpsasLogo.png" alt="MpsasLogo" width="60" height="60">
 </div>
-<div class="text-center"><a [routerLink]="['/home']"><button class="btn btn-primary" type="submit"> Home</button></a>
+<div class="text-center"><a [routerLink]="['/home']"><button class="btn btn-primary" type="submit" style="width: 100%; background: black;border: white;"> Home</button></a>
 </div>
-<div class="wrapper container" style="width: 28%;">
-    <p class="h3">Track Application</p>
+<div class="wrapper container" style="color: white; text-align: center; text-shadow: 0 0 5px black, 0 0 5px black; width: 40%;" >
+    <p class="h3">TRACK YOUR APPLICATION</p>
     <br>
     <form (ngSubmit)="trackApplicationForm.valid && checkApplicationStatus()" #trackApplicationForm="ngForm">
         <div class="form-group ">
-            <label>Service Reference Number</label>
+            <label>SERVICE REFERENCE NUMBER</label>
             <input class="form-control" type="text" name="refNo" placeholder="Your 4-digit service reference number"
                 [(ngModel)]=serviceRefNo #refNo="ngModel"
                 [ngClass]="{ 'is-invalid': trackApplicationForm.submitted && refNo.invalid }" required
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Track" style="width: 100%;">
+            <input type="submit" class="btn btn-primary" value="Track"  style="width: 100%; background: black;border: white;">
         </div>
     </form>
 </div><br>
