@@ -1,7 +1,6 @@
 .header {
     overflow: hidden;
-    background-image: linear-gradient(to right, #adb0c5, #d3dbe0);
-    padding: 10px;
+    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);    padding: 10px;
     width: 100%;
     top: 0;
     font-weight: 500;
