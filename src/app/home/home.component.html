@@ -1,23 +1,49 @@
 <div class="header">
-    <a href="#" style="float: right;">MPSAS Bank</a>
-    <div style="float: center;">
-        <a href="#" routerLink="/home">Home</a>
-        <a href="#" routerLink="/admin-login">Admin Login</a>
-        <a href="#" routerLink="/open-acc">Apply for Account</a>
-        <a href="#" routerLink="/register-ib">Register for Internet Banking</a>
-        <a href="#" routerLink="/track-application">Track</a>
-        
-    </div>
+    <h1 style="color: white; text-align: center; text-shadow: 0 0 5px black, 0 0 5px black;">MPSAS Bank Welcomes you!!</h1>
 </div>
 
-<div class="container-fluid">
-    <div class="row" style="margin-top: 5px; ">
-        
-        <div class="login col-3">
-            <app-login></app-login>
-        </div>
+<div class="row">
+    <div class="leftcolumn">
+      <div class="digitalBanking">
+        <h2 style="color: white; text-align: center; text-shadow: 0 0 5px black, 0 0 5px black;">DIGITAL BANKING</h2>
+      </div>
     </div>
-</div>
+    
+    
+    <div class="rightcolumn">
+      
+      <div class="card" >
+        <h2 style="color: white; text-align: center; text-shadow: 0 0 5px black, 0 0 5px black;">ADMIN LOGIN</h2>
+        <button class="btn" type="submit" (click)="ngOnInit" href="#" routerLink="/login" style="width: 50%;color: white; background: black;border: white;font-size: larger; align-self: center;">LOGIN</button>
+        
+        <!-- <h4>New User?<a routerLink='registerPage'>Register</a></h4> -->
+      </div>
+      <div class="applyOnline" >
+        <h3 style="color: white; text-align: center; text-shadow: 0 0 5px black, 0 0 5px black;">APPLY FOR ACCOUNT</h3>
+        <button class="btn" type="submit" (click)="ngOnInit" href="#" routerLink="/open-acc" style="width: 50%;color: white; background: black;border: white;font-size: larger; align-self: center; text-align: center;">APPLY</button>
+        <!-- &nbsp;&nbsp;&nbsp;<a routerLink="/checkStatus">Already Registered? Check Status</a> -->
+      </div>
+      <div class="registerForBanking">
+        <h2 style="color: white; text-align: center; text-shadow: 0 0 5px black, 0 0 5px black;">REGISTER FOR INTERNET BANKING</h2>
+        <button class="btn" type="submit" (click)="ngOnInit" href="#" routerLink="/login" style="width: 50%;color: white; background: black;border: white;font-size: larger; align-self: center;">REGISTER</button>
+        
+        <!-- <h4>New User?<a routerLink='registerPage'>Register</a></h4> -->
+      </div>
+      <div class="trackApp">
+        <h2 style="color: white; text-align: center; text-shadow: 0 0 5px black, 0 0 5px black;">TRACK</h2>
+        <button class="btn" type="submit" (click)="ngOnInit" href="#" routerLink="/login" style="width: 50%;color: white; background: black;border: white;font-size: larger; align-self: center;">TRACK</button>
+        
+        <!-- <h4>New User?<a routerLink='registerPage'>Register</a></h4> -->
+      </div>
+      
+      <div class="contactUs">
+        <h4>Need Help?</h4>
+        <p><b>Contact Us</b></p>
+        <p>1800897856</p>
+        <p>+919080706050</p>
+      </div>
+    </div>
+  </div>
 
 <app-footer></app-footer>
 

@@ -5,11 +5,12 @@
   width: 100%;
   top: 0;
   font-weight: 500;
+  
 }
 
 
 .header a {
-  float: left;
+  float: center;
   color: rgb(252, 251, 248);
   text-align: center;
   padding: 12px;
@@ -20,6 +21,84 @@
 
 .header a:hover {
   opacity: 70%;
+}
+.card{
+  width: 30vw;
+    float: center;
+    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);
+    border: .2rem solid black;
+    margin: 28px 50px;
+    align-self: center;
+    margin-left:  35vw;
+    margin-right:   auto;
+    border-radius: 10px;
+    padding: 14px;
+
+}
+.digitalBanking{
+  width: 30vw;
+    float: center;
+    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);
+    border: .2rem solid black;
+    margin: 28px 50px;
+    align-self: center;
+    margin-left:  35vw;
+    margin-right:   auto;
+    border-radius: 10px;
+    padding: 14px;
+
+}
+.contactUs{
+
+  width: 30vw;
+    float: center;
+    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);
+    border: .2rem solid black;
+    margin: 28px 50px;
+    align-self: center;
+    margin-left:  35vw;
+    margin-right:   auto;
+    border-radius: 10px;
+    padding: 14px;
+}
+.applyOnline{
+  width: 30vw;
+    float: center;
+    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);
+    border: .2rem solid black;
+    margin: 28px 50px;
+    align-self: center;
+    text-align: center;
+    margin-left:  35vw;
+    margin-right:   auto;
+    border-radius: 10px;
+    padding: 14px;
+}
+.registerForBanking{
+  width: 30vw;
+    float: center;
+    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);
+    border: .2rem solid black;
+    margin: 28px 50px;
+    align-self: center;
+    text-align: center;
+    margin-left:  35vw;
+    margin-right:   auto;
+    border-radius: 10px;
+    padding: 14px;
+}
+.trackApp{
+  width: 30vw;
+    float: center;
+    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);
+    border: .2rem solid black;
+    margin: 28px 50px;
+    align-self: center;
+    text-align: center;
+    margin-left:  35vw;
+    margin-right:   auto;
+    border-radius: 10px;
+    padding: 14px;
 }
 
 .footer {
