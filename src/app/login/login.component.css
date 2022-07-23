@@ -1,4 +1,25 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+.header {
+    overflow: hidden;
+    background-image: linear-gradient(to right, #861F41, #e06890);
+    padding: 10px;
+    width: 100%;
+    top: 0;
+    font-weight: 500;
+  }
+  .header a {
+    float: left;
+    color: rgb(252, 251, 248);
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+  }
+  .header a:hover {
+    opacity: 70%;
+  }
+  
 body {
     font: 14px sans-serif;
     background-color: #d3dbe0;
