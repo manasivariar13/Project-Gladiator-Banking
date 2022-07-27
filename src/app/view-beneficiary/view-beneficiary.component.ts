@@ -29,7 +29,7 @@ export class ViewBeneficiaryComponent implements OnInit {
       if (data.statusCode === "SUCCESS")
         this.beneficiaries = data.beneficiaryDto;
       else {
-        this.statusMessage = "No beneficiary exists.Add new beneficiary to enjoy the effortless transfer of money";
+        this.statusMessage = "No beneficiary exists. Add new beneficiary to enjoy the effortless transfer of money";
         document.getElementById("openModalButton").click();
       }
     })
@@ -48,6 +48,12 @@ export class ViewBeneficiaryComponent implements OnInit {
       pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)
       pdf.save('beneficiary.pdf'); // Generated PDF   
     });
+  }
+
+  deleteBeneficiary() {}
+
+  onDeleteClick() {
+    document.getElementById("deleteModalButton").click();
   }
 
   onClick($event: any) {

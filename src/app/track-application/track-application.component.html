@@ -8,8 +8,8 @@
     <br>
     <form (ngSubmit)="trackApplicationForm.valid && checkApplicationStatus()" #trackApplicationForm="ngForm">
         <div class="form-group ">
-            <label>SERVICE REFERENCE NUMBER</label>
-            <input class="form-control" type="text" name="refNo" placeholder="Your 4-digit service reference number"
+            <label>CUSTOMER ID</label>
+            <input class="form-control" type="text" name="refNo" placeholder="Your customer ID"
                 [(ngModel)]=serviceRefNo #refNo="ngModel"
                 [ngClass]="{ 'is-invalid': trackApplicationForm.submitted && refNo.invalid }" required
                 pattern="^[0-9]{4}$">

@@ -18,6 +18,7 @@ export class AdminLoginComponent {
   constructor(private adminService: AdminService, private router: Router, private spinnerService: NgxSpinnerService) { }
 
   loginCheck() {
+    this.router.navigate(['admin-dashboard']);
     this.spinnerService.show();
     this.adminService.login(this.adminLogin).subscribe(response => {
       if (response.statusCode === "SUCCESS") {

@@ -4,11 +4,12 @@
     width: 100%;
     top: 0;
     font-weight: 500;
+    color: white;
   }
   
   .header a {
     float: left;
-    color: rgb(58, 56, 56);
+    color: white;
     text-align: center;
     padding: 12px;
     text-decoration: none;

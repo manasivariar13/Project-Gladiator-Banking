@@ -2,9 +2,26 @@
     position: relative;
     margin-left: 25%;
     width: 72%;
+    color: white;
 }
 
-.modal-content{
-    background-image: linear-gradient(to bottom right, #adb0c5, #d3dbe0, #adb0c5);
-      border: .2rem solid #428BCA;
+  td{
+    color: black;
+    text-align: center;
+  }
+
+  th {
+    text-align: center;
+  }
+
+  .modal-content{
+    background-color: #f9f9f9;
+      /* border: .2rem solid black; */
+  }
+
+  .modal-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
   }

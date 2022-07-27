@@ -17,18 +17,21 @@ body {
     position: relative;
     margin: auto;
     padding: 0%;
-    border: .2rem solid black;
+    /* border: .2rem solid black; */
 }
 
 .card{
    
-    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);    
+    /* background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);     */
     border-style: none;
-    color: white;
+    color: black;
 
 }
 .card-header{
     font-size: x-large;
 }
 
+.card-title, .card-text {
+    color: grey
+}
 
