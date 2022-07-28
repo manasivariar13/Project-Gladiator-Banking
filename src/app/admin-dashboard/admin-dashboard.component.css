@@ -1,7 +1,6 @@
 .header {
     overflow: hidden;
-    background-image: linear-gradient(to right, #adb0c5, #d3dbe0);
-    padding: 10px;
+    background-image: linear-gradient(to right, #861F41, #e06890);    padding: 10px;;
     width: 100%;
     top: 0;
     font-weight: 500;
@@ -9,7 +8,7 @@
 
 .header a {
     float: left;
-    color: rgb(58, 56, 56);
+    color: white;
     text-align: center;
     padding: 12px;
     text-decoration: none;
@@ -30,5 +29,17 @@
 }
 
 .btn {
-    width: 100%;
+    width: 75%;
+    background-image: linear-gradient(to right, #861F41, #e06890);
+}
+
+.btn:hover {
+    background-image: linear-gradient(to right, #e06890, #861F41);
+}
+
+.button-grp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

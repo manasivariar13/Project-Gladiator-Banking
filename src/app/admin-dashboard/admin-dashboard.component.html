@@ -1,12 +1,12 @@
 <div class="header">
-  <a routerLink="/home">HFDC Bank</a>
+  <a routerLink="/home">MPSAS Bank</a>
   <a>Welcome, {{name | uppercase}}</a>
   <div style="float: right;">
     <a routerLink="/logout">Logout</a>
   </div>
 </div>
 <br>
-<div>
+<div class="button-grp">
   <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="showPendingRequests()">Show Pending
     Requests</button>
   <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="showApprovalForm()">Approve Pending Requests</button>
@@ -52,7 +52,20 @@
   <form (ngSubmit)="f.valid && search()" #f="ngForm">
     <div class="form-group">
       <label>Service Reference No.</label>
-      <input class="form-control" type="text" name="refNo1" [(ngModel)]="serviceReferenceNumber" #refNo1="ngModel"
+      <input class="form-control" type="t`
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      ext" name="refNo1" [(ngModel)]="serviceReferenceNumber" #refNo1="ngModel"
         [ngClass]="{ 'is-invalid': f.submitted && refNo1.invalid }" required pattern="^[0-9]{4}$">
       <div class="invalid-feedback" *ngIf="f.submitted && refNo1.invalid && (refNo1.dirty || refNo1.touched)">
         <div *ngIf="refNo1.errors.required">Service Reference No. is required</div>
@@ -69,10 +82,10 @@
 <div *ngIf="searched && showSearchToggle" class="card border-dark mb-3 mx-auto" style="max-width: 40rem; margin-top: 20px;">
   <div class="card-header">{{generatedCustomer.customer.firstName}}'s Details</div>
   <div class="card-body">
-    <p class="card-text">Service Reference Number: {{generatedCustomer.customer.serviceRefNo}}</p>
-    <p class="card-text">First Name: {{generatedCustomer.customer.firstName}}</p>
-    <p class="card-text">Middle Name: {{generatedCustomer.customer.middleName}}</p>
-    <p class="card-text">Last Name: {{generatedCustomer.customer.lastName}}</p>
+    <p class="card-text">Customer ID: {{generatedCustomer.customer.serviceRefNo}}</p>
+    <p class="card-text">Name: {{generatedCustomer.customer.firstName}}</p>
+    <!-- <p class="card-text">Middle Name: {{generatedCustomer.customer.middleName}}</p> -->
+    <!-- <p class="card-text">Last Name: {{generatedCustomer.customer.lastName}}</p> -->
     <p class="card-text">Father's Name: {{generatedCustomer.customer.fatherName}}</p>
     <p class="card-text">Mobile Number: {{generatedCustomer.customer.mobileNo}}</p>
     <p class="card-text">Email ID: {{generatedCustomer.customer.emailId}}</p>
@@ -81,8 +94,8 @@
     <p class="card-text">Occupation: {{generatedCustomer.customer.occupationType}}</p>
     <p class="card-text">Source of Income: {{generatedCustomer.customer.sourceOfIncome}}</p>
     <p class="card-text">Gross Annual Income: {{generatedCustomer.customer.grossAnnualIncome}}</p>
-    <p class="card-text">Net Banking Required: {{generatedCustomer.customer.netBankingRequirement}}</p>
-    <p class="card-text">Debit Card Required: {{generatedCustomer.customer.debitCardRequirement}}</p>
+    <!-- <p class="card-text">Net Banking Required: {{generatedCustomer.customer.netBankingRequirement}}</p> -->
+    <!-- <p class="card-text">Debit Card Required: {{generatedCustomer.customer.debitCardRequirement}}</p> -->
     <p class="card-text">Is Approved: {{generatedCustomer.customer.isApproved}}</p>
   </div>
 </div>
@@ -91,12 +104,12 @@
     <thead style="background-color: #adb0c5;">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Service Reference No</th>
-        <th scope="col">Title</th>
+        <th scope="col">Customer ID</th>
+        <!-- <th scope="col">Title</th> -->
         <th scope="col">First Name</th>
-        <th scope="col">Middle Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Father's Name</th>
+        <!-- <th scope="col">Middle Name</th>
+        <th scope="col">Last Name</th> -->
+        <th scope="col">Gender</th>
         <th scope="col">Mobile Number</th>
         <th scope="col">Email ID</th>
         <th scope="col">Aadhaar Card Number</th>
@@ -110,18 +123,18 @@
         <th scope="col">State</th>
         <th scope="col">City</th>
         <th scope="col">Pincode</th>
-        <th scope="col">Internet Banking Requirement</th>
-        <th scope="col">Debit Card Requirement</th>
+        <!-- <th scope="col">Internet Banking Requirement</th> -->
+        <!-- <th scope="col">Debit Card Requirement</th> -->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let customer of customerRequestStatus.customers; let i = index">
         <th scope="row">{{i + 1}}</th>
         <td>{{customer.serviceRefNo}}</td>
-        <td>{{customer.title}}</td>
+        <!-- <td>{{customer.title}}</td> -->
         <td>{{customer.firstName}}</td>
-        <td>{{customer.middleName}}</td>
-        <td>{{customer.lastName}}</td>
+        <!-- <td>{{customer.middleName}}</td>
+        <td>{{customer.lastName}}</td> -->
         <td>{{customer.fatherName}}</td>
         <td>{{customer.mobileNo}}</td>
         <td>{{customer.emailId}}</td>
@@ -136,14 +149,14 @@
         <td>{{customer.perAddress.state}}</td>
         <td>{{customer.perAddress.city}}</td>
         <td>{{customer.perAddress.pincode}}</td>
-        <td>
+        <!-- <td>
           <span *ngIf="customer.netBankingRequirement === 'Y'; else netBankingNotRequired">Yes</span>
           <ng-template #netBankingNotRequired>No</ng-template>
         </td>
         <td>
           <span *ngIf="customer.debitCardRequirement === 'Y'; else netBankingNotRequired">Yes</span>
           <ng-template #debitCardNotRequired>No</ng-template>
-        </td>
+        </td> -->
       </tr>
     </tbody>
   </table>
