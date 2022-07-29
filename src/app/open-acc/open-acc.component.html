@@ -1,20 +1,21 @@
 <button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
 <div id="myModal" class="modal fade" role="dialog">
     <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h4 class="modal-title">{{statusCode}}</h4>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">{{statusCode}}</h4>
+            </div>
+            <div class="modal-body">
+                <p>{{statusMessage}}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal"
+                    (click)="onClick($event)">Close</button>
+            </div>
         </div>
-        <div class="modal-body">
-          <p>{{statusMessage}}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal" (click)="onClick($event)">Close</button>
-        </div>
-      </div>
-  
+
     </div>
-  </div>
+</div>
 <div class="header">
     <a href="#">MPSAS Bank</a>
     <div style="float: right;">
@@ -26,7 +27,8 @@
 </div>
 
 
-<h3 style="color: black; text-align: center; text-shadow: 0 0 5px white, 0 0 5px white;"><strong>OPEN SAVINGS ACCOUNT</strong></h3>
+<h3 style="color: black; text-align: center; text-shadow: 0 0 5px white, 0 0 5px white;"><strong>OPEN SAVINGS
+        ACCOUNT</strong></h3>
 
 <div class="w-75 form justify-content-center">
     <form class="form" name="form" (ngSubmit)="f.form.valid && onSubmit()" #f="ngForm">
@@ -58,45 +60,14 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="firstName" placeholder="Enter First Name"
-                            [(ngModel)]="newAccount.firstName" #firstName="ngModel"
+                            [(ngModel)]="newAccount.Name" #firstName="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required>
                         <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
                             <div *ngIf="firstName.errors.required">First Name is required</div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="mName" class="col-sm-5 col-form-label">Middle Name</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="middleName" placeholder="Enter Middle Name"
-                            [(ngModel)]="newAccount.middleName" #middleName="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && middleName.invalid }">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="lName" class="col-sm-5 col-form-label">Last Name <span style="color:red">*</span>
-                    </label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="lastName" placeholder="Enter Last Name"
-                            [(ngModel)]="newAccount.lastName" #lastName="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && lastName.invalid }" required>
-                        <div *ngIf="f.submitted && lastName.invalid" class="invalid-feedback">
-                            <div *ngIf="lastName.errors.required">Last Name is required</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="fatherName" class="col-sm-5 col-form-label">Father's Name <span
-                            style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="fatherName" placeholder="Enter Father's Name"
-                            [(ngModel)]="newAccount.fatherName" #fatherName="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && fatherName.invalid }" required>
-                        <div *ngIf="f.submitted && fatherName.invalid" class="invalid-feedback">
-                            <div *ngIf="fatherName.errors.required">Father Name is required</div>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="form-group row">
                     <label for="mobileNumber" class="col-sm-5 col-form-label">Mobile Number <span
                             style="color:red">*</span></label>
@@ -132,287 +103,244 @@
                     <div class="col-sm-6">
                         <input type="number" class="form-control" name="aadhaarNo"
                             placeholder="Enter Aadhar Card Number" [(ngModel)]="newAccount.aadhaarNo"
-                            #aadhaarNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && aadhaarNo.invalid }"
-                            required minlength="16" maxlength="16">
+                            #aadhaarNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && aadhaarNo.invalid }" required
+                            minlength="16" maxlength="16">
                         <div *ngIf="f.submitted && aadhaarNo.invalid" class="invalid-feedback">
                             <div *ngIf="aadhaarNo.errors.required">Aadhaar Number is required</div>
-                            <div *ngIf="aadhaarNo.errors.minlength || aadhaarNo.errors.maxlength">Aadhaar number must be 16
+                            <div *ngIf="aadhaarNo.errors.minlength || aadhaarNo.errors.maxlength">Aadhaar number must be
+                                16
                                 digit</div>
                         </div>
                     </div>
                 </div>
-                <div class="form-group row">
-                    <label for="panCardNumber" class="col-sm-5 col-form-label">Pan Card Number <span
-                            style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="panCardNo"
-                            placeholder="Enter Pan Card Number" [(ngModel)]="newAccount.panCard"
-                            #panCardNo="ngModel" [ngClass]="{ 'is-invalid': f.submitted && panCardNo.invalid }"
-                            required>
-                        <div *ngIf="f.submitted && panCardNo.invalid" class="invalid-feedback">
-                            <div *ngIf="panCardNo.errors.required">Pan Card Number is required</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="dob" class="col-sm-5 col-form-label">Date of Birth <span
-                            style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="date" class="form-control" placeholder="Enter Date of Birth" name="dateOfBirth"
-                            [(ngModel)]="newAccount.dateOfBirth" #dateOfBirth="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && dateOfBirth.invalid }" required date max="2002-01-01">
-                        <div *ngIf="f.submitted && dateOfBirth.invalid" class="invalid-feedback">
-                            <div *ngIf="dateOfBirth.errors.required">Date of Birth is required</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="title" class="col-sm-5 col-form-label">Account Type<span style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <select [(ngModel)]="newAccount.accountType" class="form-control" name="AccountType" #accountType="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" required>
-                            <option value=""></option>
-                            <option value="Savings"> Savings</option>
-                            <option value="Current">  Current</option>
-                            
-                        </select>
-                        <div *ngIf="f.submitted && accountType.invalid" class="invalid-feedback">
-                            <div *ngIf="accountType.errors.required">Please select an account type</div>
-                        </div>
-                    </div>
-                </div>
+                <form (ngSubmit)="upload()" #docForm="ngForm" enctype="multipart/form-data">
 
-            </div>
-        </div>
+                    <div class="form-group row">
+                        <label for="aadharPic" class="col-sm-5 col-form-label">Upload Aadhar Card <span
+                                style="color:red">*</span> </label>
+                        <div class="col-sm-6">
+                            <input type="file" name="aadhar" (change)="onFileChange($event)" #aadhar="ngModel"
+                                [(ngModel)]="customer.aadharPic" required />
+                            <div class="validations"
+                                *ngIf="onFileChange && aadhar.invalid && (aadhar.dirty||aadhar.touched)">
+                                <div *ngIf="aadhar.errors.required">
+                                    Aadhar Card Picture is required!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="panCardNumber" class="col-sm-5 col-form-label">Pan Card Number <span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="text" class="form-control" name="panCardNo" placeholder="Enter Pan Card Number"
+                                [(ngModel)]="newAccount.panCardNo" #panCardNo="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && panCardNo.invalid }" required>
+                            <div *ngIf="f.submitted && panCardNo.invalid" class="invalid-feedback">
+                                <div *ngIf="panCardNo.errors.required">Pan Card Number is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="panPic" class="col-sm-5 col-form-label">Upload Pan Card <span
+                                style="color:red">*</span> </label>
+                        <div class="col-sm-6">
+
+                            <input type="file" name="panPic" (change)="onFileChange($event)" #pan="ngModel"
+                                [(ngModel)]="customer.panPic" required />
+                            <div class="validations" *ngIf="onFileChange && pan.invalid && (pan.dirty||pan.touched)">
+                                <div *ngIf="pan.errors.required">
+                                    Pan Card is required!
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="dob" class="col-sm-5 col-form-label">Date of Birth <span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <input type="date" class="form-control" placeholder="Enter Date of Birth" name="dateOfBirth"
+                                [(ngModel)]="newAccount.dateOfBirth" #dateOfBirth="ngModel"
+                                [ngClass]="{ 'is-invalid': f.submitted && dateOfBirth.invalid }" required date
+                                max="2002-01-01">
+                            <div *ngIf="f.submitted && dateOfBirth.invalid" class="invalid-feedback">
+                                <div *ngIf="dateOfBirth.errors.required">Date of Birth is required</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="title" class="col-sm-5 col-form-label">Account Type<span
+                                style="color:red">*</span></label>
+                        <div class="col-sm-6">
+                            <select [(ngModel)]="newAccount.accountType" class="form-control" name="AccountType"
+                                #accountType="ngModel" [ngClass]="{ 'is-invalid': f.submitted && title.invalid }"
+                                required>
+                                <option value=""></option>
+                                <option value="Savings"> Savings</option>
+                                <option value="Current"> Current</option>
+
+                            </select>
+                            <div *ngIf="f.submitted && accountType.invalid" class="invalid-feedback">
+                                <div *ngIf="accountType.errors.required">Please select an account type</div>
+                            </div>
+                        </div>
+                    </div>
 
 
 
-        <div class="card my-1">
-            <div class="pos">
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-5 col-form-label" style="font-size: large;"><b>Residential
-                            Address: </b></label>
-                </div>
 
-                <div class="form-group row">
-                    <label for="resLine1" class="col-sm-5 col-form-label">Address Line 1 <span
-                            style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="resAddressLine1" name="resAddressLine1"
-                            placeholder="Enter Address Line 1" [(ngModel)]="newAccount.resAddress.addressLine1"
-                            #resAddressLine1="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && resAddressLine1.invalid }" required>
-                        <div *ngIf="f.submitted && resAddressLine1.invalid" class="invalid-feedback">
-                            <div *ngIf="resAddressLine1.errors.required">Address is required</div>
-                        </div>
-                    </div>
-                </div>
 
-                <div class="form-group row">
-                    <label for="resLine2" class="col-sm-5 col-form-label">Address Line 2 </label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="resAddressLine2" name="resAddressLine2"
-                            placeholder="Enter Address Line 2" [(ngModel)]="newAccount.resAddress.addressLine2"
-                            #resAddressLine2="ngModel">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="resLandmark" class="col-sm-5 col-form-label">Landmark</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" placeholder="Enter Landmark" id="resLandmark" name="resLandmark"
-                            [(ngModel)]="newAccount.resAddress.landmark" #resLandmark="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && resLandmark.invalid }">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="resState" class="col-sm-5 col-form-label">State <span style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="resState" name="resState" placeholder="Enter State"
-                            [(ngModel)]="newAccount.resAddress.state" #resState="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && resState.invalid }" required>
-                        <div *ngIf="f.submitted && resState.invalid" class="invalid-feedback">
-                            <div *ngIf="resState.errors.required">State is required</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="resCity" class="col-sm-5 col-form-label">City <span style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="resCity" name="resCity" placeholder="Enter City"
-                            [(ngModel)]="newAccount.resAddress.city" #resCity="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && resCity.invalid }" required>
-                        <div *ngIf="f.submitted && resCity.invalid" class="invalid-feedback">
-                            <div *ngIf="resCity.errors.required">City is required</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="resCode" class="col-sm-5 col-form-label">Pin Code <span
-                            style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="number" class="form-control" id="resPincode" name="resPincode" placeholder="Enter Pin Code"
-                            [(ngModel)]="newAccount.resAddress.pincode" #resPincode="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && resPincode.invalid }" required minlength="6"
-                            maxlength="6">
-                        <div *ngIf="f.submitted && resPincode.invalid" class="invalid-feedback">
-                            <div *ngIf="resPincode.errors.required">Pincode is required</div>
-                            <div *ngIf="resPincode.errors.minlength || resPincode.errors.maxlength">Pincode must be 6
-                                digit</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-5 col-form-label" style="font-size: large;"><b>Permanent
-                            Address: </b></label>
-                </div>
-                <div class="form-group row ml-1">
-                    <div class="checkbox">
-                        <label><input type="checkbox" id="perAddressCheckbox" name="perAddressCheckbox" (change)="add($event)" #check ngModel>
-                            Permanent Address same as Mailing
-                            Address</label>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="perLine1" class="col-sm-5 col-form-label">Address Line 1<span
-                            style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="perAddressLine1" name="perAddressLine1"
-                            placeholder="Enter Address Line 1" [(ngModel)]="newAccount.perAddress.addressLine1"
-                            #perAddressLine1="ngModel" [disabled]="check.checked"
-                            [ngClass]="{ 'is-invalid': f.submitted && perAddressLine1.invalid }" required>
-                        <div *ngIf="f.submitted && perAddressLine1.invalid" class="invalid-feedback">
-                            <div *ngIf="perAddressLine1.errors.required">Address is required</div>
-                        </div>
-                    </div>
-                </div>
+                    <div class="card my-1">
+                        <div class="pos">
+                            <div class="form-group row">
+                                <label for="staticEmail" class="col-sm-5 col-form-label"
+                                    style="font-size: large;"><b>Address: </b></label>
+                            </div>
 
-                <div class="form-group row">
-                    <label for="perLine2" class="col-sm-5 col-form-label">Address Line 2 </label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control"  id="perAddressLine2" name="perAddressLine2"
-                            placeholder="Enter Address Line 2" [(ngModel)]="newAccount.perAddress.addressLine2"
-                            #perAddressLine2="ngModel" [disabled]="check.checked"
-                            [ngClass]="{ 'is-invalid': f.submitted && perAddressLine2.invalid }">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="perLandmark" class="col-sm-5 col-form-label">Landmark</label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" placeholder="Enter Landmark"  id="perLandmark" name="perLandmark"
-                            [(ngModel)]="newAccount.perAddress.landmark" #perLandmark="ngModel" [disabled]="check.checked"
-                            [ngClass]="{ 'is-invalid': f.submitted && perLandmark.invalid }">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="perState" class="col-sm-5 col-form-label">State <span style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="perState" name="perState" placeholder="Enter State"
-                            [(ngModel)]="newAccount.perAddress.state" #perState="ngModel" [disabled]="check.checked"
-                            [ngClass]="{ 'is-invalid': f.submitted && perState.invalid }" required>
-                        <div *ngIf="f.submitted && perState.invalid" class="invalid-feedback">
-                            <div *ngIf="perState.errors.required">State is required</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="perCity" class="col-sm-5 col-form-label">City <span style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" id="perCity" name="perCity" placeholder="Enter City"
-                            [(ngModel)]="newAccount.perAddress.city" #perCity="ngModel" [disabled]="check.checked"
-                            [ngClass]="{ 'is-invalid': f.submitted && perCity.invalid }" required>
-                        <div *ngIf="f.submitted && perCity.invalid" class="invalid-feedback">
-                            <div *ngIf="perCity.errors.required">City is required</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="perCode" class="col-sm-5 col-form-label">Pin Code <span
-                            style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="number" class="form-control" id="perPincode" name="perPincode" placeholder="Enter Pin Code"
-                            [(ngModel)]="newAccount.perAddress.pincode" #perPincode="ngModel" [disabled]="check.checked"
-                            [ngClass]="{ 'is-invalid': f.submitted && perPincode.invalid }" required minlength="6"
-                            maxlength="6">
-                        <div *ngIf="f.submitted && perPincode.invalid" class="invalid-feedback">
-                            <div *ngIf="perPincode.errors.required">Pincode is required</div>
-                            <div *ngIf="perPincode.errors.minlength || perPincode.errors.maxlength">Pincode must be 6
-                                digit</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="card my-1">
-            <div class="pos">
-                <div class="form-group row">
-                    <label for="staticEmail" class="col-sm-5 col-form-label" style="font-size: large;"><b>Occupation
-                            Details: </b></label>
-                </div>
+                            <div class="form-group row">
+                                <label for="resLine1" class="col-sm-5 col-form-label">Address Line 1 <span
+                                        style="color:red">*</span></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="resAddressLine1" name="resAddressLine1"
+                                        placeholder="Enter Address Line 1" [(ngModel)]="newAccount.address.addressLine1"
+                                        #resAddressLine1="ngModel"
+                                        [ngClass]="{ 'is-invalid': f.submitted && resAddressLine1.invalid }" required>
+                                    <div *ngIf="f.submitted && resAddressLine1.invalid" class="invalid-feedback">
+                                        <div *ngIf="resAddressLine1.errors.required">Address is required</div>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="form-group row">
-                    <label for="title" class="col-sm-5 col-form-label">Occupation Type <span
-                            style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="occupationType" placeholder="Enter Occupation"
-                            [(ngModel)]="newAccount.occupationType" #occupationType="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && occupationType.invalid }" required>
-                        <div *ngIf="f.submitted && occupationType.invalid" class="invalid-feedback">
-                            <div *ngIf="occupationType.errors.required">Occupation is required</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="title" class="col-sm-5 col-form-label">Source of Income <span
-                            style="color:red">*</span></label>
-                    <div class="col-sm-6">
-                        <input type="text" class="form-control" name="sourceOfIncome"
-                            placeholder="Enter Source of Income" [(ngModel)]="newAccount.sourceOfIncome"
-                            #sourceOfIncome="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && sourceOfIncome.invalid }" required>
-                        <div *ngIf="f.submitted && sourceOfIncome.invalid" class="invalid-feedback">
-                            <div *ngIf="sourceOfIncome.errors.required">Source of Income is required</div>
-                        </div>
-                    </div>
-                </div>
+                            <div class="form-group row">
+                                <label for="resLine2" class="col-sm-5 col-form-label">Address Line 2 </label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="resAddressLine2" name="resAddressLine2"
+                                        placeholder="Enter Address Line 2" [(ngModel)]="newAccount.address.addressLine2"
+                                        #resAddressLine2="ngModel">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="resLandmark" class="col-sm-5 col-form-label">Landmark</label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" placeholder="Enter Landmark"
+                                        id="resLandmark" name="resLandmark" [(ngModel)]="newAccount.address.landmark"
+                                        #resLandmark="ngModel"
+                                        [ngClass]="{ 'is-invalid': f.submitted && resLandmark.invalid }">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="resState" class="col-sm-5 col-form-label">State <span
+                                        style="color:red">*</span></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="resState" name="resState"
+                                        placeholder="Enter State" [(ngModel)]="newAccount.address.state"
+                                        #resState="ngModel"
+                                        [ngClass]="{ 'is-invalid': f.submitted && resState.invalid }" required>
+                                    <div *ngIf="f.submitted && resState.invalid" class="invalid-feedback">
+                                        <div *ngIf="resState.errors.required">State is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="resCity" class="col-sm-5 col-form-label">City <span
+                                        style="color:red">*</span></label>
+                                <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="resCity" name="resCity"
+                                        placeholder="Enter City" [(ngModel)]="newAccount.address.city"
+                                        #resCity="ngModel" [ngClass]="{ 'is-invalid': f.submitted && resCity.invalid }"
+                                        required>
+                                    <div *ngIf="f.submitted && resCity.invalid" class="invalid-feedback">
+                                        <div *ngIf="resCity.errors.required">City is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="resCode" class="col-sm-5 col-form-label">Pin Code <span
+                                        style="color:red">*</span></label>
+                                <div class="col-sm-6">
+                                    <input type="number" class="form-control" id="resPincode" name="resPincode"
+                                        placeholder="Enter Pin Code" [(ngModel)]="newAccount.address.pincode"
+                                        #resPincode="ngModel"
+                                        [ngClass]="{ 'is-invalid': f.submitted && resPincode.invalid }" required
+                                        minlength="6" maxlength="6">
+                                    <div *ngIf="f.submitted && resPincode.invalid" class="invalid-feedback">
+                                        <div *ngIf="resPincode.errors.required">Pincode is required</div>
+                                        <div *ngIf="resPincode.errors.minlength || resPincode.errors.maxlength">Pincode
+                                            must be 6
+                                            digit</div>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div class="form-group row">
-                    <label for="title" class="col-sm-5 col-form-label">Gross Annual Income</label>
-                    <div class="col-sm-6">
-                        <input type="number" class="form-control" name="grossAnnualIncome"
-                            placeholder="Enter Annual Income" [(ngModel)]="newAccount.grossAnnualIncome"
-                            #grossAnnualIncome="ngModel"
-                            [ngClass]="{ 'is-invalid': f.submitted && grossAnnualIncome.invalid }">
-                        <div *ngIf="f.submitted && grossAnnualIncome.invalid" class="invalid-feedback">
-                            <div *ngIf="grossAnnualIncome.errors.type">Income must be number</div>
+
                         </div>
+                        <div class="card my-1">
+                            <div class="pos">
+                                <div class="form-group row">
+                                    <label for="staticEmail" class="col-sm-5 col-form-label"
+                                        style="font-size: large;"><b>Occupation
+                                            Details: </b></label>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="title" class="col-sm-5 col-form-label">Occupation Type <span
+                                            style="color:red">*</span></label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="occupationType"
+                                            placeholder="Enter Occupation"
+                                            [(ngModel)]="newAccount.income.occupationType" #occupationType="ngModel"
+                                            [ngClass]="{ 'is-invalid': f.submitted && occupationType.invalid }"
+                                            required>
+                                        <div *ngIf="f.submitted && occupationType.invalid" class="invalid-feedback">
+                                            <div *ngIf="occupationType.errors.required">Occupation is required</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="title" class="col-sm-5 col-form-label">Source of Income <span
+                                            style="color:red">*</span></label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" name="sourceOfIncome"
+                                            placeholder="Enter Source of Income"
+                                            [(ngModel)]="newAccount.income.sourceOfIncome" #sourceOfIncome="ngModel"
+                                            [ngClass]="{ 'is-invalid': f.submitted && sourceOfIncome.invalid }"
+                                            required>
+                                        <div *ngIf="f.submitted && sourceOfIncome.invalid" class="invalid-feedback">
+                                            <div *ngIf="sourceOfIncome.errors.required">Source of Income is required
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label for="title" class="col-sm-5 col-form-label">Gross Annual Income</label>
+                                    <div class="col-sm-6">
+                                        <input type="number" class="form-control" name="grossAnnualIncome"
+                                            placeholder="Enter Annual Income"
+                                            [(ngModel)]="newAccount.income.grossAnnualIncome"
+                                            #grossAnnualIncome="ngModel"
+                                            [ngClass]="{ 'is-invalid': f.submitted && grossAnnualIncome.invalid }">
+                                        <div *ngIf="f.submitted && grossAnnualIncome.invalid" class="invalid-feedback">
+                                            <div *ngIf="grossAnnualIncome.errors.type">Income must be number</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card my-1">
+                            <div class="pos">
+                                <div class="form-group row ml-3">
+                                    <div class="checkbox">
+                                        <label><input type="checkbox" class="form-check-input" name="termsCheckbox"
+                                                checked disabled>
+                                            I agree to the terms and conditions</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="wrapper text-center">
+                            <button class="btn btn-primary my-4" type="submit"
+                                style="width: 100%; background: black;border: white;">SUBMIT</button><br>
+                        </div>
+
                     </div>
-                </div>
-            </div>
-        </div>
-        <div class="card my-1">
-            <div class="pos">
-                <div class="form-group row ml-3 mt-2">
-                    <div class="checkbox">
-                        <label><input type="checkbox" class="form-check-input" name="internetBanking" (change)="netBanking($event)"> Opt for Internet
-                            Banking</label>
-                    </div>
-                </div>
-                <div class="form-group row ml-3 mt-2">
-                    <div class="checkbox">
-                        <label><input type="checkbox" class="form-check-input" name="debitCardRequirement" (change)="debitCard($event)"> Opt for Debit Card 
-                           </label>
-                    </div>
-                </div>
-                <div class="form-group row ml-3">
-                    <div class="checkbox">
-                        <label><input type="checkbox" class="form-check-input" name="termsCheckbox" checked disabled>
-                            I agree to the terms and conditions</label>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="wrapper text-center">
-            <button class="btn btn-primary my-4" type="submit" style="width: 100%; background: black;border: white;">SUBMIT</button><br>
-        </div>
-    </form>
-</div>

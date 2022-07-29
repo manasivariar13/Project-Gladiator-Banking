@@ -3,50 +3,23 @@ import { Customer } from './../models/customer';
 import { Component, OnInit } from '@angular/core';
 import { Address } from '../models/address';
 import { Router } from '@angular/router';
+
 declare var $: any;
 @Component({
   selector: 'app-open-acc',
   templateUrl: './open-acc.component.html',
   styleUrls: ['./open-acc.component.css']
 })
-export class OpenAccComponent implements OnInit {
+export class OpenAccComponent  {
 
+  customer : Customer;
+  aadharPic: any;
+  panPic: any;
   newAccount : Customer= new Customer();
   statusMessage: string;
   statusCode:string;
   constructor(
     private customerService: CustomerService , private router: Router) { }
-  ngOnInit() {
-    this.newAccount.netBankingRequirement="N";
-    this.newAccount.debitCardRequirement="N";
-    this.newAccount.isApproved="W";
-    
-  }
-  add(e){
-    if(e.target.checked){
-      this.newAccount.perAddress=this.newAccount.resAddress;
-  
-    }
-    else{
-      this.newAccount.perAddress=new Address();
-    }
-  }
-  netBanking(e){
-    if(e.target.checked){
-      this.newAccount.netBankingRequirement="Y";
-    }
-    else{
-      this.newAccount.netBankingRequirement="N";
-    }
-  }
-  debitCard(e){
-    if(e.target.checked){
-      this.newAccount.debitCardRequirement="Y";
-    }
-    else{
-      this.newAccount.debitCardRequirement="N";
-    }
-  }
 
   onSubmit(){
     this.customerService.openAcc(this.newAccount).subscribe(data => {
@@ -67,5 +40,22 @@ export class OpenAccComponent implements OnInit {
   } 
   onClick($event:any){
     this.router.navigate(['home']);
+  }
+  onFileChange(event) {
+    if(event.target.name=="aadhar")
+    this.aadharPic = event.target.files[0];
+    else if(event.target.name=="panPic")
+    this.panPic = event.target.files[0];
+
+  }
+
+  upload() {
+
+    let formData: FormData = new FormData();
+    formData.append('aadharPic', this.aadharPic);
+    formData.append('panPic', this.panPic);
+    this.customerService.picUpload(formData).subscribe(response => {
+    
+    });
   }
 }

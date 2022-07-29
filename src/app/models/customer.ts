@@ -1,28 +1,20 @@
 import { Address } from "./address";
+import {Income } from "./income"
 
 
 export class Customer {
 
-    public serviceRefNo: number;
+    public custId: number;
     public title: string;
-    public firstName: string;
-    public middleName: string;
-    public lastName: string;
-    public fatherName: string;
+    public Name: string;
     public mobileNo: string;
     public emailId: string;
     public aadhaarNo: string;
-    public panCard: string;
+    public panCardNo: string;
     public dateOfBirth: Date;
-    public resAddress: Address = new Address();
-    public perAddress: Address = new Address();
-    public occupationType: string;
-    public sourceOfIncome: string;
-    public grossAnnualIncome: number;
-    public netBankingRequirement: string;
-    public debitCardRequirement: string;
-    public isApproved: string;
+    public address: Address = new Address();
+    public income: Income=new Income();
     public accountType:string;
-    public aadharCardPic: string;
-    public panCardPic : string;
+    public aadharPic: string;
+    public panPic : string;
 }
