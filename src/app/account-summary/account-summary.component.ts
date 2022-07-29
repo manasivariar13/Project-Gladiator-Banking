@@ -33,6 +33,7 @@ export class AccountSummaryComponent implements OnInit {
       // if (response.statusCode === "SUCCESS") {
         this.accountSummaryStatus.accountNumber = response.accountNumber;
         this.accountSummaryStatus.balance = response.balance;
+        this.accountSummaryStatus.accountType = response.accountType;
       // }
       // else {
       //   this.error = true;

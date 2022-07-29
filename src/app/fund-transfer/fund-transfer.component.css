@@ -26,8 +26,13 @@
 form {
     color: grey;
     padding-top: 10px;
+    text-emphasis-color: black;
 }
 
 .title-header {
     border-bottom: .1rem solid black;
+}
+
+.form-control{
+    color: black;
 }
