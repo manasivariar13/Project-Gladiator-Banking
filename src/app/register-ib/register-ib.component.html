@@ -31,11 +31,11 @@
     <div class="alert alert-danger" *ngIf="error">{{message}}</div>
     <form class="form" name="form" (ngSubmit)="f.form.valid && onSubmit()" [appMustMatch]="['userPassword', 'cuserPassword' ,'txPassword', 'ctxPassword']" #f="ngForm">
         <div class="form-group">
-            <label> User ID</label>
+            <label> Account Number</label>
             <input input type="number" class="form-control" name="userId"
            [(ngModel)]="model.userId"
             #userId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userId.invalid }"
-            required placeholder="Your User Id" minlength="7" maxlength="7">
+            required placeholder="Your Account Number" minlength="7" maxlength="7">
             <div *ngIf="f.submitted && userId.invalid" class="invalid-feedback">
                 <div *ngIf="userId.errors.required">Account Number is required</div>
                 <div *ngIf="userId.errors.minlength || userId.errors.maxlength">Enter Valid Account Number</div>

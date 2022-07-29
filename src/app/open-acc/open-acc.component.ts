@@ -3,6 +3,8 @@ import { Customer } from './../models/customer';
 import { Component, OnInit } from '@angular/core';
 import { Address } from '../models/address';
 import { Router } from '@angular/router';
+import { AccountStatus } from '../models/account-status';
+import { AccountType } from '../models/account-type';
 declare var $: any;
 @Component({
   selector: 'app-open-acc',
@@ -17,42 +19,17 @@ export class OpenAccComponent implements OnInit {
   constructor(
     private customerService: CustomerService , private router: Router) { }
   ngOnInit() {
-    this.newAccount.netBankingRequirement="N";
-    this.newAccount.debitCardRequirement="N";
-    this.newAccount.isApproved="W";
+    this.newAccount.accountStatus= AccountStatus.Pending;
+    this.newAccount.accountType= AccountType.Savings;
+    this.newAccount.balance = 20000;
     
   }
-  add(e){
-    if(e.target.checked){
-      this.newAccount.perAddress=this.newAccount.resAddress;
-  
-    }
-    else{
-      this.newAccount.perAddress=new Address();
-    }
-  }
-  netBanking(e){
-    if(e.target.checked){
-      this.newAccount.netBankingRequirement="Y";
-    }
-    else{
-      this.newAccount.netBankingRequirement="N";
-    }
-  }
-  debitCard(e){
-    if(e.target.checked){
-      this.newAccount.debitCardRequirement="Y";
-    }
-    else{
-      this.newAccount.debitCardRequirement="N";
-    }
-  }
-
+ 
   onSubmit(){
     this.customerService.openAcc(this.newAccount).subscribe(data => {
       if(data.statusCode === "SUCCESS"){
         this.statusCode=data.statusCode;
-        this.statusMessage ="Registration Successful ,Service Reference Number is "+data.serviceRefNo;
+        this.statusMessage ="Registration Successful ,Your customer ID is "+data.custId;
         document.getElementById("openModalButton").click();
         
         

@@ -41,7 +41,7 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="name" placeholder="Enter Name"
-                            [(ngModel)]="newAccount.firstName" #firstName="ngModel"
+                            [(ngModel)]="newAccount.name" #firstName="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && firstName.invalid }" required>
                         <div *ngIf="f.submitted && firstName.invalid" class="invalid-feedback">
                             <div *ngIf="firstName.errors.required">First Name is required</div>
@@ -52,7 +52,7 @@
                 <div class="form-group row">
                     <label for="title" class="col-sm-5 col-form-label">Gender <span style="color:red">*</span></label>
                     <div class="col-sm-6">
-                        <select [(ngModel)]="newAccount.title" class="form-control" name="gender" #title="ngModel"
+                        <select [(ngModel)]="newAccount.gender" class="form-control" name="gender" #title="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" required>
                             <option value=""></option>
                             <option value="Male"> Male</option>
@@ -182,7 +182,7 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="resAddressLine1" name="resAddressLine1"
-                            placeholder="Enter Address Line 1" [(ngModel)]="newAccount.resAddress.addressLine1"
+                            placeholder="Enter Address Line 1" [(ngModel)]="newAccount.addressLine1"
                             #resAddressLine1="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && resAddressLine1.invalid }" required>
                         <div *ngIf="f.submitted && resAddressLine1.invalid" class="invalid-feedback">
@@ -195,7 +195,7 @@
                     <label for="resLine2" class="col-sm-5 col-form-label">Address Line 2 </label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="resAddressLine2" name="resAddressLine2"
-                            placeholder="Enter Address Line 2" [(ngModel)]="newAccount.resAddress.addressLine2"
+                            placeholder="Enter Address Line 2" [(ngModel)]="newAccount.addressLine2"
                             #resAddressLine2="ngModel">
                     </div>
                 </div>
@@ -203,7 +203,7 @@
                     <label for="resLandmark" class="col-sm-5 col-form-label">Landmark</label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" placeholder="Enter Landmark" id="resLandmark" name="resLandmark"
-                            [(ngModel)]="newAccount.resAddress.landmark" #resLandmark="ngModel"
+                            [(ngModel)]="newAccount.landmark" #resLandmark="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && resLandmark.invalid }">
                     </div>
                 </div>
@@ -211,7 +211,7 @@
                     <label for="resState" class="col-sm-5 col-form-label">State <span style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="resState" name="resState" placeholder="Enter State"
-                            [(ngModel)]="newAccount.resAddress.state" #resState="ngModel"
+                            [(ngModel)]="newAccount.state" #resState="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && resState.invalid }" required>
                         <div *ngIf="f.submitted && resState.invalid" class="invalid-feedback">
                             <div *ngIf="resState.errors.required">State is required</div>
@@ -222,7 +222,7 @@
                     <label for="resCity" class="col-sm-5 col-form-label">City <span style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" id="resCity" name="resCity" placeholder="Enter City"
-                            [(ngModel)]="newAccount.resAddress.city" #resCity="ngModel"
+                            [(ngModel)]="newAccount.city" #resCity="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && resCity.invalid }" required>
                         <div *ngIf="f.submitted && resCity.invalid" class="invalid-feedback">
                             <div *ngIf="resCity.errors.required">City is required</div>
@@ -234,7 +234,7 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="number" class="form-control" id="resPincode" name="resPincode" placeholder="Enter Pin Code"
-                            [(ngModel)]="newAccount.resAddress.pincode" #resPincode="ngModel"
+                            [(ngModel)]="newAccount.pincode" #resPincode="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && resPincode.invalid }" required minlength="6"
                             maxlength="6">
                         <div *ngIf="f.submitted && resPincode.invalid" class="invalid-feedback">
@@ -349,7 +349,7 @@
                             style="color:red">*</span></label>
                     <div class="col-sm-6">
                         <input type="text" class="form-control" name="sourceOfIncome"
-                            placeholder="Enter Source of Income" [(ngModel)]="newAccount.sourceOfIncome"
+                            placeholder="Enter Source of Income" [(ngModel)]="newAccount.incomeSource"
                             #sourceOfIncome="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && sourceOfIncome.invalid }" required>
                         <div *ngIf="f.submitted && sourceOfIncome.invalid" class="invalid-feedback">
@@ -362,7 +362,7 @@
                     <label for="title" class="col-sm-5 col-form-label">Gross Annual Income</label>
                     <div class="col-sm-6">
                         <input type="number" class="form-control" name="grossAnnualIncome"
-                            placeholder="Enter Annual Income" [(ngModel)]="newAccount.grossAnnualIncome"
+                            placeholder="Enter Annual Income" [(ngModel)]="newAccount.grossIncome"
                             #grossAnnualIncome="ngModel"
                             [ngClass]="{ 'is-invalid': f.submitted && grossAnnualIncome.invalid }">
                         <div *ngIf="f.submitted && grossAnnualIncome.invalid" class="invalid-feedback">
@@ -376,13 +376,13 @@
             <div class="pos">
                 <div class="form-group row ml-3 mt-2">
                     <div class="checkbox">
-                        <label><input type="checkbox" class="form-check-input" name="internetBanking" (change)="netBanking($event)"> Opt for Internet
+                        <label><input type="checkbox" class="form-check-input" name="internetBanking"> Opt for Internet
                             Banking</label>
                     </div>
                 </div>
                 <div class="form-group row ml-3 mt-2">
                     <div class="checkbox">
-                        <label><input type="checkbox" class="form-check-input" name="debitCardRequirement" (change)="debitCard($event)"> Opt for Debit Card 
+                        <label><input type="checkbox" class="form-check-input" name="debitCardRequirement"> Opt for Debit Card 
                            </label>
                     </div>
                 </div>

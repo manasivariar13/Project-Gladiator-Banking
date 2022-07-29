@@ -21,9 +21,9 @@ export class UserProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = parseInt(sessionStorage.getItem('userId'));
-    this.newAccount.netBankingRequirement="N";
-    this.newAccount.debitCardRequirement="N";
-    this.newAccount.isApproved="W";
+    // this.newAccount.netBankingRequirement="N";
+    // this.newAccount.debitCardRequirement="N";
+    // this.newAccount.isApproved="W";
     this.userProfileService.showUserProfile(this.userId).subscribe(response => {
       if (response.statusCode === "SUCCESS")
         this.userProfileStatus.customer = response.customer;

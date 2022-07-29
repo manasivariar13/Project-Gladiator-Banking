@@ -57,21 +57,23 @@ export class ViewBeneficiaryComponent implements OnInit {
     });
   }
 
-  reloadCurrentPage() {
-    console.log('reload');
-    window.location.reload();
-  }
+  // reloadComponent() {
+  //   let currentUrl = this.router.url;
+  //       this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+  //       this.router.onSameUrlNavigation = 'reload';
+  //       this.router.navigate(['/view-beneficiary']);
+  //   }
 
   deleteBeneficiary(beneficiaryId: number) {
     // this.beneficiaryId = beneficiaryId;
-    this.service.deleteBeneficiary(beneficiaryId).subscribe(async (data) => {
-      console.log(data);
+    this.service.deleteBeneficiary(beneficiaryId).subscribe( (data) => {
+      // console.log(data);
       try {
         this.statusMessage = data;
       } catch (error) {
         this.statusMessage = 'Beneficiary Deleted Successfully';
-        await this.showBeneficiary();
-        this.reloadCurrentPage();
+        this.showBeneficiary();
+        // this.reloadComponent();
       }
 
       // document.getElementById("closePopup").click();

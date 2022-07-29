@@ -16,7 +16,7 @@ export class ViewBeneficiaryService {
      return this.http.get<BeneficiaryStatus>('http://localhost:9090/api/viewAllBeneficiaries/'+accountNumber);
   }
 
-  deleteBeneficiary(beneficiaryId:number):Observable<string>{
+  deleteBeneficiary(beneficiaryId:any):Observable<string>{
     return this.http.delete<string>('http://localhost:9090/api/deleteBeneficiary/'+beneficiaryId);
   }
 }

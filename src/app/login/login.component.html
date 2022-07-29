@@ -18,7 +18,7 @@
         <div class="form-group">
             <label for="userId">User ID</label>
             <input class="form-control" type="text" name="id" placeholder="Your 6-digit user id"
-                [(ngModel)]="userLogin.userId" #id="ngModel" [ngClass]="{ 'is-invalid': loginForm.submitted && id.invalid }">
+                [(ngModel)]="userLogin.userId" #id="ngModel" [ngClass]="{ 'is-invalid': loginForm.submitted && id.invalid }" required>
             <div class="invalid-feedback" *ngIf="loginForm.submitted && id.invalid && (id.dirty || id.touched)">
                 <div class="error" *ngIf="id.errors.required">User ID is required</div>
                 <!-- <div class="error" *ngIf="id.errors.pattern">User ID must be of 6 digits</div> -->
