@@ -17,7 +17,7 @@ export class UserService {
   constructor(private http: HttpClient) { }
 
   login(login: UserLogin): Observable<UserLoginStatus>{
-    return this.http.post<any>('http://localhost:9090/user-login',login);
+    return this.http.post<any>('http://localhost:9090/api/login',login);
   }
 
   register(register: RegisterIb): Observable<Status>{

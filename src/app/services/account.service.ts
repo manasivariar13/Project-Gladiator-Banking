@@ -10,8 +10,8 @@ export class AccountService {
 
   constructor(private http: HttpClient) { }
 
-  showAccountSummary(userId: number): Observable<AccountSummaryStatus>{
-    let url="http://localhost:9090/account-summary?userId="+userId;
+  showAccountSummary(accountNumber: number): Observable<AccountSummaryStatus>{
+    let url="http://localhost:9090/api/accountSummary/"+accountNumber;
     return this.http.get<AccountSummaryStatus>(url);
   }
 }

@@ -16,6 +16,7 @@ body {
     width: 46%;
     position: relative;
     margin: auto;
+    margin-top: 25px;
     padding: 0%;
     /* border: .2rem solid black; */
 }

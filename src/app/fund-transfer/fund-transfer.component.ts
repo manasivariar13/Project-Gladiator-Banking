@@ -88,7 +88,6 @@ export class FundTransferComponent implements OnInit {
       if(data.statusCode==="SUCCESS"){
         this.beneficiaries=data.beneficiaryDto;
       }
-        
     })
   }
 

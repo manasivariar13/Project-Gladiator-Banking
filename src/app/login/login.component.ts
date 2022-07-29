@@ -19,11 +19,15 @@ export class LoginComponent {
 
   loginCheck(){
     this.SpinnerService.show();
-    this.router.navigate(['account-summary']);
+    // this.router.navigate(['account-summary']);
+    console.log(this.userLogin);
     this.userService.login(this.userLogin).subscribe(data => {
       if(data.statusCode === "SUCCESS"){
+        
         sessionStorage.setItem('userId', String(data.userId));
-        sessionStorage.setItem('userName',data.userName);
+        sessionStorage.setItem('accountNumber',data.accountNumber);
+        // console.log(data.userName);
+        console.log(data.userId);
         this.SpinnerService.hide();  
         this.router.navigate(['account-summary']);
       }
@@ -32,6 +36,11 @@ export class LoginComponent {
         this.error = true;
         this.message = data.statusMessage;
       }
+    }, error => {
+      this.SpinnerService.hide(); 
+      this.error = true;
+      this.message = error.error.statusMessage;
+      console.log(error.error.statusMessage);
     })
   }
   }

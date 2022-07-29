@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class AccountSummaryComponent implements OnInit {
 
-  userId: number;
+  accountNumber: number;
   accountSummaryStatus: AccountSummaryStatus = new AccountSummaryStatus();
   message: string;
   error: boolean;
@@ -28,16 +28,16 @@ export class AccountSummaryComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.userId = parseInt(sessionStorage.getItem('userId'));
-    this.accountService.showAccountSummary(this.userId).subscribe(response => {
-      if (response.statusCode === "SUCCESS") {
+    this.accountNumber = parseInt(sessionStorage.getItem('accountNumber'));
+    this.accountService.showAccountSummary(this.accountNumber).subscribe(response => {
+      // if (response.statusCode === "SUCCESS") {
         this.accountSummaryStatus.accountNumber = response.accountNumber;
         this.accountSummaryStatus.balance = response.balance;
-      }
-      else {
-        this.error = true;
-        this.message = response.statusMessage;
-      }
+      // }
+      // else {
+      //   this.error = true;
+      //   this.message = response.statusMessage;
+      // }
     })
   }
 

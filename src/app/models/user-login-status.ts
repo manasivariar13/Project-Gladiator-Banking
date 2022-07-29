@@ -1,6 +1,6 @@
 export class UserLoginStatus{
     public userId: number;
-    public userName: string;
+    public accountNumber: string;
     public statusCode: string;
     public statusMessage: string;
 }
