@@ -22,4 +22,7 @@ export class Customer {
     public netBankingRequirement: string;
     public debitCardRequirement: string;
     public isApproved: string;
+    public accountType:string;
+    public aadharCardPic: string;
+    public panCardPic : string;
 }

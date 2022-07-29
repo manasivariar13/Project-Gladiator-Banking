@@ -166,6 +166,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label for="title" class="col-sm-5 col-form-label">Account Type<span style="color:red">*</span></label>
+                    <div class="col-sm-6">
+                        <select [(ngModel)]="newAccount.accountType" class="form-control" name="AccountType" #accountType="ngModel"
+                            [ngClass]="{ 'is-invalid': f.submitted && title.invalid }" required>
+                            <option value=""></option>
+                            <option value="Savings"> Savings</option>
+                            <option value="Current">  Current</option>
+                            
+                        </select>
+                        <div *ngIf="f.submitted && accountType.invalid" class="invalid-feedback">
+                            <div *ngIf="accountType.errors.required">Please select an account type</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
