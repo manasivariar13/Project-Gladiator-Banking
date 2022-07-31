@@ -21,14 +21,14 @@ export class UserService {
   }
 
   register(register: RegisterIb): Observable<Status>{
-    return this.http.post<any>('http://localhost:9090/register-ib',register);
+    return this.http.post<any>('http://localhost:9090/api/signup',register);
   }
 
   changePassword(changePassword: ChangePassword): Observable<Status>{
-    return this.http.post<any>('http://localhost:9090/change-password',changePassword);
+    return this.http.put<any>('http://localhost:9090/api/changePassword',changePassword);
   }
 
   setNewPassword(setNewPassword:SetNewPassword):Observable<Status>{
-    return this.http.post<any>('http://localhost:9090/set-new-password',setNewPassword);
+    return this.http.post<any>('http://localhost:9090/api/setNewPassword',setNewPassword);
   }
 }

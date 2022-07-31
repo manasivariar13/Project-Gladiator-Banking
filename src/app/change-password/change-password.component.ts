@@ -20,10 +20,9 @@ export class ChangePasswordComponent implements OnInit {
   }
   onSubmit(){
     this.changePassword.userId=parseInt(sessionStorage.getItem('userId'));
-    this.changePassword.userPassword=this.model.userPassword;
+    this.changePassword.loginPassword=this.model.userPassword;
     this.changePassword.transactionPassword=this.model.transactionPassword;
     this.userService.changePassword(this.changePassword).subscribe(data => {
-      console.log(data);
       if(data.statusCode === "SUCCESS"){
         this.statusMessage="Passwords changed successfully";
         document.getElementById("openModalButton").click();

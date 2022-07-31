@@ -1,7 +1,7 @@
 import {Transaction} from './transaction'
 export class TransactionSuccessfulDto{
 
-    public transactionSuccessDto:Transaction=new Transaction();
+    // public transactionDetail: string;
     public statusCode:string;
     public statusMessage:string;
 }

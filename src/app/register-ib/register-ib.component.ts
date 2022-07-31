@@ -21,16 +21,14 @@ export class RegisterIbComponent implements OnInit {
 
   ngOnInit(){ }
   onSubmit() {
-    this.register.userId=this.model.userId;
-    this.register.userPassword=this.model.userPassword;
+    this.register.accountNumber=this.model.accountNumber;
+    this.register.loginPassword=this.model.loginPassword;
     this.register.transactionPassword=this.model.transactionPassword;
-    this.register.otp=this.model.otp;
     this.SpinnerService.show();
     this.userService.register(this.register).subscribe(data => {
       if(data.statusCode === "SUCCESS"){
-       
-        this.SpinnerService.hide(); 
-        alert("Registration for Internet Banking Successful. Use your Id and password to experience our bank services");
+        this.SpinnerService.hide();
+        alert("Registration for Internet Banking Successful. Your user ID will be sent to your registered email id.");
         
         this.router.navigate(['home']);
       }
@@ -42,28 +40,28 @@ export class RegisterIbComponent implements OnInit {
     })
 
   }
-  onClick($event:any){
-    $event.preventDefault();
-    if(typeof this.model.userId === "undefined" || !this.model.userId){
-        this.error=true;
-        this.message = "UserId required to generate OTP"
-        return;
+  // onClick($event:any){
+  //   $event.preventDefault();
+  //   if(typeof this.model.userId === "undefined" || !this.model.userId){
+  //       this.error=true;
+  //       this.message = "UserId required to generate OTP"
+  //       return;
 
-    }
-    this.SpinnerService.show();
-    this.otpService.generateOtpBanking(this.model.userId).subscribe(data=>{
-      if(data.statusCode=="SUCCESS"){
-        this.SpinnerService.hide(); 
-        this.statusMessage="OTP has been sent to your registered Email ID";
-        document.getElementById("openModalButton").click();
-      }
-      else{
-        this.SpinnerService.hide(); 
-        this.statusMessage=data.statusMessage;
-        document.getElementById("openModalButton").click();
-      }
-      this.SpinnerService.hide(); 
-    })
-  }
+  //   }
+  //   this.SpinnerService.show();
+  //   this.otpService.generateOtpBanking(this.model.userId).subscribe(data=>{
+  //     if(data.statusCode=="SUCCESS"){
+  //       this.SpinnerService.hide(); 
+  //       this.statusMessage="OTP has been sent to your registered Email ID";
+  //       document.getElementById("openModalButton").click();
+  //     }
+  //     else{
+  //       this.SpinnerService.hide(); 
+  //       this.statusMessage=data.statusMessage;
+  //       document.getElementById("openModalButton").click();
+  //     }
+  //     this.SpinnerService.hide(); 
+  //   })
+  // }
 
 }

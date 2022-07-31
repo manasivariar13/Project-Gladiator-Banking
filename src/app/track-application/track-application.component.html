@@ -10,9 +10,9 @@
         <div class="form-group ">
             <label>CUSTOMER ID</label>
             <input class="form-control" type="text" name="refNo" placeholder="Your customer ID"
-                [(ngModel)]=serviceRefNo #refNo="ngModel"
+                [(ngModel)]=custId #refNo="ngModel"
                 [ngClass]="{ 'is-invalid': trackApplicationForm.submitted && refNo.invalid }" required
-                pattern="^[0-9]{4}$">
+                pattern="^[0$-9]{3}">
             <div class="invalid-feedback"
                 *ngIf="trackApplicationForm.submitted && refNo.invalid && (refNo.dirty || refNo.touched)">
                 <div *ngIf="refNo.errors.required">Service reference number is required</div>
@@ -25,15 +25,15 @@
     </form>
 </div><br>
 <div class="h2" style="text-align: center;" *ngIf="submitted">
-    <div *ngIf="status == 'A'" class="mx-auto progress-bar progress-bar-striped progress-bar-animated bg-success"
+    <div *ngIf="status == 'Approved'" class="mx-auto progress-bar progress-bar-striped progress-bar-animated bg-success"
         role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 46%">
         Wohoo! Your application was approved.
     </div>
-    <div *ngIf="status == 'W'" class="mx-auto progress-bar progress-bar-striped progress-bar-animated"
+    <div *ngIf="status == 'Pending'" class="mx-auto progress-bar progress-bar-striped progress-bar-animated"
         role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 94%" #notApproved>Hold
         tight! Your application is pending for approval. You will be notified once approved.
     </div>
-    <div *ngIf="status == 'R'" class="mx-auto progress-bar progress-bar-striped progress-bar-animated bg-danger"
+    <div *ngIf="status == 'Rejected'" class="mx-auto progress-bar progress-bar-striped progress-bar-animated bg-danger"
         role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 94%">
         Oh no! Your application was rejected.
     </div>

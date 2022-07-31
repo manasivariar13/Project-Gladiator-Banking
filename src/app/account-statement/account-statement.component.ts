@@ -28,41 +28,42 @@ export class AccountStatementComponent implements OnInit {
   constructor(private service:AccountStatementService , private accountService: AccountService) { }
 
   ngOnInit(): void {
-    this.statementDuration.userId=parseInt(sessionStorage.getItem('userId'));
-    this.accountService.showAccountSummary(this.userId).subscribe(response => {
-      if (response.statusCode === "SUCCESS") {
-        this.accountSummaryStatus.accountNumber = response.accountNumber;
-        this.accountSummaryStatus.balance = response.balance;
-      }
-      else {
-        this.error = true;
-        this.message = response.statusMessage;
-      }
-    })
+    // this.statementDuration.userId=parseInt(sessionStorage.getItem('userId'));
+    // this.accountService.showAccountSummary(this.userId).subscribe(response => {
+    //   if (response.statusCode === "SUCCESS") {
+    //     this.accountSummaryStatus.accountNumber = response.accountNumber;
+    //     this.accountSummaryStatus.balance = response.balance;
+    //   }
+    //   else {
+    //     this.error = true;
+    //     this.message = response.statusMessage;
+    //   }
+    // })
 
     
   }
   accountStatement(){
+    this.statementDuration.accountNumber = parseInt(sessionStorage.getItem('accountNumber'));
     this.service.fetchStatement(this.statementDuration).subscribe(data =>{
       if(data.statusCode==="SUCCESS"){
         this.searched=true;
-        console.log(data);
-        this.accountstatement=data.statementTransactionDto;
+        this.accountstatement=data.transactions;
         for(let s of this.accountstatement){
           var t= new TransactionDisplay();
           t.accountNumber = s.fromAccountNumber^s.toAccountNumber^this.accountSummaryStatus.accountNumber;
           t.amount=s.amount;
-          if(s.fromAccountNumber === this.accountSummaryStatus.accountNumber)
-            t.check="Debit"
-          else 
-            t.check="Credit"
-          t.dateTime=s.dateTime;
-          t.remark=s.remark;
+          // if(s.fromAccountNumber === this.accountSummaryStatus.accountNumber)
+          //   t.check="Debit"
+          // else 
+          //   t.check="Credit"
+          t.transactionDate=s.dateTime;
           t.transactionId=s.transactionId;
           t.transactionType=s.transactionType;
+          t.transactionMode = s.transactionMode;
+          t.transactionDate = s.transactionDate;
           this.transactions.push(t);
         }
-        this.transactions = this.transactions.sort((a : TransactionDisplay,b: TransactionDisplay) => (a.dateTime > b.dateTime ? -1 : 1));
+        this.transactions = this.transactions.sort((a : TransactionDisplay,b: TransactionDisplay) => (a.transactionDate > b.transactionDate ? -1 : 1));
         this.searched=true;
       }
       else

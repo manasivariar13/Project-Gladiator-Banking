@@ -6,6 +6,8 @@ export class StatementTransactionDto{
 	public transactionId: number;
 	public  remark: string;
     public  dateTime: number;
+	public transactionMode: string;
+	public  transactionDate: number;
 }
 
 export class TransactionDisplay{
@@ -14,9 +16,8 @@ export class TransactionDisplay{
 	  public  amount: number;
 	  public  transactionType: string;
 	  public transactionId: number;
-	  public  remark: string;
-	public  dateTime: number;
-	public check: string;
-  
+	  public transactionMode: string;
+	public  transactionDate: number;
+
   }
   

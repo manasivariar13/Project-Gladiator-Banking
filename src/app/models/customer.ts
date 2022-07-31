@@ -10,8 +10,9 @@ export class Customer {
     public mobileNo: string;
     public emailId: string;
     public aadhaarNo: string;
-    public panCard: string;
+    public panCardNo: string;
     public dateOfBirth: Date;
+    public addressId: number;
     public addressLine1: string;
     public addressLine2: string;
     public landmark: string;
@@ -21,6 +22,7 @@ export class Customer {
     public accountStatus: AccountStatus;
     public accountType: AccountType;
     public balance: number;
+    public incomeId: number;
     public occupationType: string;
     public incomeSource: string;
     public grossIncome: number;

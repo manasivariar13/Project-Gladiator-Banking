@@ -31,9 +31,7 @@ export class ViewBeneficiaryComponent implements OnInit {
   showBeneficiary() {
     this.service.showBeneficiary(this.accountNumber).subscribe((data) => {
       if (data.statusCode === 'SUCCESS') {
-        console.log(data);
         this.beneficiaries = data.beneficiaryDto;
-        console.log(this.beneficiaries);
       } else {
         this.statusMessage =
           'No beneficiary exists. Add new beneficiary to enjoy the effortless transfer of money';
@@ -67,24 +65,13 @@ export class ViewBeneficiaryComponent implements OnInit {
   deleteBeneficiary(beneficiaryId: number) {
     // this.beneficiaryId = beneficiaryId;
     this.service.deleteBeneficiary(beneficiaryId).subscribe( (data) => {
-      // console.log(data);
       try {
         this.statusMessage = data;
       } catch (error) {
         this.statusMessage = 'Beneficiary Deleted Successfully';
         this.showBeneficiary();
-        // this.reloadComponent();
       }
 
-      // document.getElementById("closePopup").click();
-      // if (data.statusCode === "SUCCESS")
-      // console.log(data);
-      //   this.beneficiaries = data.beneficiaryDto;
-      // console.log(this.beneficiaries);
-      // else {
-      //   this.statusMessage = "No beneficiary exists. Add new beneficiary to enjoy the effortless transfer of money";
-      //   document.getElementById("openModalButton").click();
-      // }
     });
   }
 

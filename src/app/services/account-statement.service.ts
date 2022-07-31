@@ -15,7 +15,7 @@ export class AccountStatementService {
   constructor(private http: HttpClient) { }
 
   fetchStatement(statementDuration:StatementDuration):Observable<AccountStatementStatus>{
-    return this.http.post<AccountStatementStatus>('http://localhost:9090/account-statement',statementDuration);
+    return this.http.post<AccountStatementStatus>('http://localhost:9090/api/accountStatement',statementDuration);
   }
     
 

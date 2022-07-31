@@ -7,57 +7,71 @@ import { Customer } from '../models/customer';
 @Component({
   selector: 'app-user-profile',
   templateUrl: './user-profile.component.html',
-  styleUrls: ['./user-profile.component.css']
+  styleUrls: ['./user-profile.component.css'],
 })
 export class UserProfileComponent implements OnInit {
-
-  userId: number;
+  custId: number;
   userProfileStatus: UserProfileStatus = new UserProfileStatus();
   message: string;
   error: boolean;
-  newAccount : Customer= new Customer();
+  newAccount: Customer = new Customer();
 
-  constructor(private router: Router, private userProfileService: UserProfileService) { }
+  constructor(
+    private router: Router,
+    private userProfileService: UserProfileService
+  ) {}
 
   ngOnInit(): void {
-    this.userId = parseInt(sessionStorage.getItem('userId'));
-    // this.newAccount.netBankingRequirement="N";
-    // this.newAccount.debitCardRequirement="N";
-    // this.newAccount.isApproved="W";
-    this.userProfileService.showUserProfile(this.userId).subscribe(response => {
-      if (response.statusCode === "SUCCESS")
+    this.custId = parseInt(sessionStorage.getItem('custId'));
+    this.fetchProfile();
+  }
+
+  fetchProfile() {
+    this.userProfileService
+    .showUserProfile(this.custId)
+    .subscribe((response) => {
+      if (response.statusCode === 'SUCCESS') {
+        sessionStorage.setItem('name', response.customer.name);
         this.userProfileStatus.customer = response.customer;
-      else {
+        this.newAccount = response.customer;
+      } else {
         this.error = true;
         this.message = response.statusMessage;
       }
-    })
+    });
   }
 
-  updateProfile(): void {
-    // localStorage.removeItem("editContactId")
-    // localStorage.setItem("editContactId", contact.id.toString())
-    // this.router.navigate(['account-summary'])
-    document.getElementById("openModalButton").click();
+  openModal() {
+    document.getElementById('openModalButton').click();
   }
 
-  onSubmit(){
+  updateProfile() {
+
+    this.userProfileService.updateProfile(this.newAccount).subscribe(
+      (response) => {
+        if (response.statusCode === 'SUCCESS') {
+          sessionStorage.setItem('name', response.customer.name);
+          this.message = response.statusMessage;
+        }
+        else {
+          this.error = true;
+          this.message = response.statusMessage
+        }});
+    document.getElementById('close-button').click();
+  }
+
+  onSubmit() {
     // document.getElementById("openModalButton").click();
     // this.customerService.openAcc(this.newAccount).subscribe(data => {
     //   if(data.statusCode === "SUCCESS"){
     //     this.statusCode=data.statusCode;
     //     this.statusMessage ="Registration Successful ,Service Reference Number is "+data.serviceRefNo;
     //     document.getElementById("openModalButton").click();
-        
-        
     //   }
     //   else{
     //     this.statusMessage=data.statusMessage;
     //     document.getElementById("openModalButton").click();
     //   }
     // })
-
-
-  } 
-
+  }
 }

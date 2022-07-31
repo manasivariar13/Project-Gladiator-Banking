@@ -19,7 +19,7 @@ export class OpenAccComponent implements OnInit {
   constructor(
     private customerService: CustomerService , private router: Router) { }
   ngOnInit() {
-    this.newAccount.accountStatus= AccountStatus.Pending;
+    this.newAccount.accountStatus= AccountStatus.Approved;
     // this.newAccount.accountType= AccountType.Savings;
     this.newAccount.balance = 20000;
     

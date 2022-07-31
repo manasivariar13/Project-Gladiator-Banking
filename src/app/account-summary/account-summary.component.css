@@ -36,3 +36,9 @@ body {
     color: grey
 }
 
+td, th {
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+

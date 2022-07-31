@@ -7,7 +7,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h4 class="modal-title">Update Profile</h4>
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id="close-button" type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
         <div class="modal-body">
             <div class="form justify-content-center">
@@ -204,20 +204,21 @@
     <div class="card border-dark w-100">
             <div class="card-header">
                 <h4>User Profile</h4>
-                <button type="submit" (click)="updateProfile()" class="btn btn-primary" style="background: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);    ;border: white;">Update profile</button>
+                <button type="submit" (click)="openModal()" class="btn btn-primary" style="background: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);    ;border: white;">Update profile</button>
             </div>
             <div class="card-body">
-                <h5 class="card-text">Name: {{userProfileStatus.customer.gender}} {{userProfileStatus.customer.name | uppercase}}</h5>
+                <h5 class="card-text">Name: {{userProfileStatus.customer.name | uppercase}}</h5>
+                <h5 class="card-text">Gender: {{userProfileStatus.customer.gender}}</h5>
                 <!-- <h5 class="card-text">Father's Name: {{userProfileStatus.customer.fatherName}}</h5> -->
                 <h5 class="card-text">Mobile Number: {{userProfileStatus.customer.mobileNo}}</h5>
                 <h5 class="card-text">Email Id: {{userProfileStatus.customer.emailId}}</h5>
                 <h5 class="card-text">Aadhar Card Number: {{userProfileStatus.customer.aadhaarNo}}</h5>
-                <h5 class="card-text">Pan Card Number:</h5>
+                <h5 class="card-text">Pan Card Number: {{userProfileStatus.customer.panCardNo}}</h5>
                 <h5 class="card-text">Date Of Birth: {{userProfileStatus.customer.dateOfBirth}}</h5>
                 <h5 class="card-text">Occupation Type: {{userProfileStatus.customer.occupationType}}</h5>
                 <h5 class="card-text">Source of Income: {{userProfileStatus.customer.incomeSource}}</h5>
-                <h5 class="card-text">Gross Annual Income: </h5>
-                <h5 class="card-text">Permanent Address: {{userProfileStatus.customer.addressLine1}}, {{userProfileStatus.customer.addressLine2}}, {{userProfileStatus.customer.landmark}}, {{userProfileStatus.customer.city}}, {{userProfileStatus.customer.state}}</h5>
+                <h5 class="card-text">Gross Annual Income: {{userProfileStatus.customer.grossIncome}}</h5>
+                <h5 class="card-text">Permanent Address: {{userProfileStatus.customer.addressLine1}}, {{userProfileStatus.customer.addressLine2}}, {{userProfileStatus.customer.landmark}}, {{userProfileStatus.customer.city}}, {{userProfileStatus.customer.state}} - {{userProfileStatus.customer.pincode}}</h5>
             </div>
     </div>
 </div>

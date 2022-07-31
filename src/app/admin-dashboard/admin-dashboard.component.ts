@@ -32,7 +32,6 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private adminService: AdminService, private router: Router, private bnIdle: BnNgIdleService) {
     this.bnIdle.startWatching(600).subscribe((res) => {
       if(res) {
-        console.log("Session Expired");
         this.router.navigate(['session-expired']);
       }
     })

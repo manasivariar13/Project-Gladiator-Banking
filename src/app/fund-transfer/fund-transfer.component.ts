@@ -6,7 +6,7 @@ import { ViewBeneficiaryService } from '../services/view-beneficiary.service';
 import { BeneficiaryDetails } from '../models/show-beneficiary';
 import { AccountService } from '../services/account.service';
 import { AccountSummaryStatus } from '../models/account-summary-status';
-import { Transaction } from '../models/transaction';
+import { FundTransferDto } from '../models/fund-transfer-dto';
 import { GenerateOtpService } from '../services/generate-otp.service';
 import { BnNgIdleService } from 'bn-ng-idle';
 
@@ -19,7 +19,8 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class FundTransferComponent implements OnInit {
   statusMessage: string;
   statusCode : string;
-  transaction: TransactionDto = new TransactionDto();
+  transaction: FundTransferDto = new FundTransferDto();
+
   accountSummaryStatus: AccountSummaryStatus = new AccountSummaryStatus();
   beneficiaries: BeneficiaryDetails[];
   constructor(private service:ViewBeneficiaryService , private transactionService:TransactionService  ,
@@ -34,57 +35,91 @@ export class FundTransferComponent implements OnInit {
     };
   message: string;
   error: boolean;
-  transactionDetails:Transaction=new Transaction();
-  userId:number;
+  transactionDetails: string;
+  custId:number;
+  otp:string;
 
 
 
   ngOnInit(): void {
-    this.userId=parseInt(sessionStorage.getItem('userId'));
+    this.custId=parseInt(sessionStorage.getItem('custId'));
     this.showBeneficiary();
-    this.accountService.showAccountSummary(this.userId).subscribe(response => {
-      if (response.statusCode === "SUCCESS") {
-        this.accountSummaryStatus.accountNumber = response.accountNumber;
+
+    this.accountSummaryStatus.accountNumber=parseInt(sessionStorage.getItem('accountNumber'));
+    this.transaction.fromAccount=sessionStorage.getItem('accountNumber');
+
+    // this.accountService.showAccountSummary(this.custId).subscribe(response => {
+    //   if (response.statusCode === "SUCCESS") {
+    //     this.accountSummaryStatus.accountNumber = response.accountNumber;
         
-        sessionStorage.setItem("accountNumber",String(response.accountNumber));
-        this.transaction.fromAccountNumber=parseInt(sessionStorage.getItem('accountNumber'));
-      }
-      else {
-        this.error = true;
-        this.message = response.statusMessage;
-      }
-    })
+    //     sessionStorage.setItem("accountNumber",String(response.accountNumber));
+    //     this.transaction.fromAccountNumber=parseInt(sessionStorage.getItem('accountNumber'));
+    //   }
+    //   else {
+    //     this.error = true;
+    //     this.message = response.statusMessage;
+    //   }
+    // })
     
   }
+
+  getOTP() {
+    this.transactionService.getOTP(this.custId).subscribe(data => {
+      if (data.statusCode === "SUCCESS") {
+        // this.statusMessage = data.statusMessage;
+        // this.statusCode = data.statusCode;
+        // document.getElementById("openModalButton").click();
+        // this.onSubmit();
+      }
+      else {
+        this.statusMessage = data.statusMessage;
+        this.statusCode = data.statusCode;
+        document.getElementById("openModalButton").click();
+      }
+    }
+    )
+  }
+
+
   onSubmit(){
-    this.transaction.fromAccountNumber=parseInt(sessionStorage.getItem('accountNumber'));
+    // this.transaction.fromAccountNumber=parseInt(sessionStorage.getItem('accountNumber'));
     this.SpinnerService.show();
+    if(this.transaction.otp==this.otp){
+
+
     this.transactionService.transfer(this.transaction).subscribe( data =>{
       if(data.statusCode === "SUCCESS"){
-        this.SpinnerService.hide(); 
-        this.transactionDetails=data.transactionSuccessDto;
+        this.SpinnerService.hide();
+        // this.transactionDetails=data.transactionDetail;
         alert(data.statusMessage);
-        sessionStorage.setItem('transactionId',String(this.transactionDetails.id));
-        sessionStorage.setItem('fromAccountNumber',String(this.transactionDetails.fromAccountNumber));
-        sessionStorage.setItem('toAccountNumber',String(this.transactionDetails.toAccountNumber));
-        sessionStorage.setItem('remarks',this.transactionDetails.remarks);
-        sessionStorage.setItem('transactionAmount',String(this.transactionDetails.amount));
-        sessionStorage.setItem('transactionType',this.transactionDetails.transactionType);
-        sessionStorage.setItem('transactionStatus',data.statusCode);
-        this.router.navigate(['fund-transfer-status']);
+        // sessionStorage.setItem('transactionId',String(this.transactionDetails.id));
+        // sessionStorage.setItem('fromAccountNumber',String(this.transactionDetails.fromAccountNumber));
+        // sessionStorage.setItem('toAccountNumber',String(this.transactionDetails.toAccountNumber));
+        // // sessionStorage.setItem('remarks',this.transactionDetails.remarks);
+        // sessionStorage.setItem('amount',String(this.transactionDetails.amount));
+        // sessionStorage.setItem('transactionAmount',String(this.transactionDetails.amount));
+        // sessionStorage.setItem('transactionType',this.transactionDetails.transactionType);
+        // sessionStorage.setItem('transactionStatus',data.statusCode);
+        this.router.navigate(['account-summary']);
         
         
       }
       else{
-        this.SpinnerService.hide(); 
+        this.SpinnerService.hide();
         sessionStorage.setItem('transactionStatus',data.statusCode);
         alert(data.statusMessage);
 
       }
     })
+  } 
+    
+    else {
+      this.SpinnerService.hide();
+      alert("OTP is incorrect");
+    }
   }
   showBeneficiary(){
-    this.service.showBeneficiary(this.userId).subscribe(data =>{
+    this.service.showBeneficiary(parseInt(sessionStorage.getItem('accountNumber'))).subscribe(data =>{
       if(data.statusCode==="SUCCESS"){
         this.beneficiaries=data.beneficiaryDto;
       }
@@ -94,14 +129,15 @@ export class FundTransferComponent implements OnInit {
   onClick($event:any){
     $event.preventDefault();
     this.SpinnerService.show();
-    this.otpService.generateOtp().subscribe(data=>{
+    this.transactionService.getOTP(this.custId).subscribe(data=>{
       if(data.statusCode=="SUCCESS"){
-        this.SpinnerService.hide(); 
+        this.SpinnerService.hide();
+        this.otp = data.statusMessage;
         this.statusMessage="OTP has been sent to your registered Email ID";
         document.getElementById("openModalButton").click();
       }
       else{
-        this.SpinnerService.hide(); 
+        this.SpinnerService.hide();
         this.statusMessage="OTP Generation Failed!!Click to try again";
         document.getElementById("openModalButton").click();
       }

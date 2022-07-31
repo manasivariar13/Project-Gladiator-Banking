@@ -15,25 +15,31 @@ export class ForgotPasswordComponent implements OnInit {
   userDoesntExist: boolean;
   error: boolean;
   message: string;
+  statusMessage: string;
 
   constructor(private forgotPasswordService: ForgotPasswordService, private router: Router, private spinnerService: NgxSpinnerService) { }
 
   ngOnInit(): void {
   }
 
-  sendOtp() {
+  redirect(){
+    this.router.navigate(['/login']);
+  }
+
+  forgotPassword() {
     this.spinnerService.show();
-    this.forgotPasswordService.verifyUserIdAndSendOtp(this.model.userId).subscribe(response => {
+    this.forgotPasswordService.forgotPassword(this.model.userId).subscribe(response => {
       if (response.statusCode === "SUCCESS") {
-        if (response.userExists) {
+        // if (response.userExists) {
           sessionStorage.setItem('userId', String(this.model.userId));
           this.spinnerService.hide();
-          this.router.navigate(['/forgot-password-otp']);
-        }
-        else{
-          this.userDoesntExist = true;
-          this.spinnerService.hide();
-        }
+          this.statusMessage = response.statusMessage;
+          document.getElementById("openModalButton").click();
+        // }
+        // else{
+        //   this.userDoesntExist = true;
+        //   this.spinnerService.hide();
+        // }
       }
       else {
         this.error = true;

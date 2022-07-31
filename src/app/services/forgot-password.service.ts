@@ -12,8 +12,8 @@ export class ForgotPasswordService {
 
   constructor(private http: HttpClient) { }
 
-  verifyUserIdAndSendOtp(userId: number): Observable<ForgotPasswordStatus> {
-    return this.http.get<ForgotPasswordStatus>("http://localhost:9090/forgot-password?userId=" + userId);
+  forgotPassword(userId: number): Observable<ForgotPasswordStatus> {
+    return this.http.get<ForgotPasswordStatus>("http://localhost:9090/api/forgotPassword/" + userId);
   }
 
   verifyOtp(forgotPassword: ForgotPassword): Observable<CheckOtpStatus> {
