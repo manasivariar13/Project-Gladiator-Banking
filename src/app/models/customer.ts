@@ -26,6 +26,6 @@ export class Customer {
     public occupationType: string;
     public incomeSource: string;
     public grossIncome: number;
-    public aadharFileName: string;
+    public aadhar: string;
     public panFileName : string;
 }

@@ -82,6 +82,8 @@
     <!-- <p class="card-text">Debit Card Required: {{generatedCustomer.customer.debitCardRequirement}}</p> -->
     <p class="card-text">Account Type: {{generatedCustomer.customer.accountType}}</p>
     <p class="card-text">Account Status: {{generatedCustomer.customer.accountStatus}}</p>
+    <p class="card-text">Aadhar Card File: {{generatedCustomer.customer.aadharFile}}</p>
+    <p class="card-text">Pan Card File: {{generatedCustomer.customer.panFile}}</p>
   </div>
 </div>
 <div class="scrollme" *ngIf="requestsToggle">
@@ -105,6 +107,8 @@
         <th scope="col">State</th>
         <th scope="col">City</th>
         <th scope="col">Pincode</th>
+        <th scope="col">Aadhar Card File</th>
+        <th scope="col">Pan Card File</th>
       </tr>
     </thead>
     <tbody>
@@ -126,7 +130,28 @@
         <td>{{customer.state}}</td>
         <td>{{customer.city}}</td>
         <td>{{customer.pincode}}</td>
+        <td><a href="/Users/satyam/Desktop/setapp/upload/{{customer.aadharFileName}}" target="_blank">
+          View
+        </a></td>
+        <td><button data-toggle="modal" data-target="#exampleModalLong" class="btn btn-danger btn-lg">
+          View
+        </button></td>
       </tr>
     </tbody>
   </table>
+  <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <img src="/Users/satyam/Desktop/setapp/upload/adhar.jpg">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

@@ -71,7 +71,7 @@ export class OpenAccComponent {
       if (response.statusCode === 'SUCCESS') {
         this.statusMessage = response.statusMessage;
         this.aadharUploaded = true;
-        this.newAccount.aadharFileName = response.statusMessage;
+        this.newAccount.aadhar = response.statusMessage;
         alert("Aadhar card uploaded successfully");
       } else {
         alert(response.statusMessage);
