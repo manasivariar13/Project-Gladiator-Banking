@@ -16,21 +16,21 @@ export class AdminService {
   constructor(private http: HttpClient) { }
 
   login(adminLogin: AdminLogin): Observable<AdminStatus>{
-    let url = "http://localhost:9090/admin-login";
+    let url = "http://localhost:9090/admin/adminLogin";
     return this.http.post<AdminStatus>(url, adminLogin);
   }
 
   showPendingRequests(): Observable<CustomerRequestStatus>{
-    let url = "http://localhost:9090/pending-requests";
+    let url = "http://localhost:9090/admin/pendingRequests";
     return this.http.get<CustomerRequestStatus>(url);
   }
 
   approve(adminApproval: AdminApproval): Observable<Status>{
-    let url = "http://localhost:9090/approve";
+    let url = "http://localhost:9090/admin/updateRequest";
     return this.http.put<Status>(url, adminApproval);
   }
 
-  searchCustomerByServRefNo(serviceReferenceNumber: number): Observable<AdminSearchCustomerStatus>{
-    return this.http.get<AdminSearchCustomerStatus>("http://localhost:9090/search-customer?serviceReferenceNumber="+serviceReferenceNumber);
+  searchCustomerById(custId: number): Observable<AdminSearchCustomerStatus>{
+    return this.http.get<AdminSearchCustomerStatus>("http://localhost:9090/api/searchCustomer/"+custId);
   }
 }

@@ -1,6 +1,6 @@
 export class ChangePassword{
     public userId:number;
-    public userPassword: string;
+    public loginPassword: string;
     public transactionPassword: string;
 
 } 

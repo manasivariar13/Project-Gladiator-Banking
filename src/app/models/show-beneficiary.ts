@@ -1,5 +1,5 @@
 export class BeneficiaryDetails{
-    accountNo:number;
+    accountNumber:number;
+    beneficiaryId:number;
     beneficiaryName:string;
-    beneficiaryNickName:string;
 }

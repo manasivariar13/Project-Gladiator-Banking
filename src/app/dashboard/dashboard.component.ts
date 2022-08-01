@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.name=sessionStorage.getItem('userName');
+    this.name=sessionStorage.getItem('name');
   }
 
 }

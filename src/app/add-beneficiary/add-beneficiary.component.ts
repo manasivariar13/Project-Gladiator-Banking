@@ -30,7 +30,7 @@ export class AddBeneficiaryComponent implements OnInit {
   }
 
   showDetails() {
-    this.beneficiary.userId=parseInt(sessionStorage.getItem('userId'));
+    this.beneficiary.customerAccountNumber=parseInt(sessionStorage.getItem('accountNumber'));
     this.service.addBeneficiary(this.beneficiary).subscribe(data=>{
       if(data.statusCode==="SUCCESS"){
         this.statusMessage=data.statusMessage;

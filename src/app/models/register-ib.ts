@@ -1,6 +1,5 @@
 export class RegisterIb{
-    public userId : number;
-    public userPassword: string;
+    public accountNumber : number;
+    public loginPassword: string;
     public transactionPassword: string;
-    public otp: string;
 }

@@ -3,4 +3,5 @@ export class AccountSummaryStatus {
     public statusMessage: string;
     public accountNumber;
     public balance;
+    public accountType;
 }

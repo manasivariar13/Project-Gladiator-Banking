@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from '../models/customer';
+import { Status } from '../models/status';
 
 
 @Injectable({
@@ -13,8 +14,12 @@ export class CustomerService {
   constructor(private http: HttpClient) { }
 
   openAcc(customer: Customer) :Observable<OpenAccStatus>{
-    return this.http.post<any>('http://localhost:9090/openAccount',customer);
+    return this.http.post<any>('http://localhost:9090/api/openAccount',customer);
   }
 
+  picUpload(formData: FormData) : Observable<Status> {
+    let url = "http://localhost:9090/api/documentUpload";
+    return this.http.post<Status>(url, formData);
+  }
   
 }

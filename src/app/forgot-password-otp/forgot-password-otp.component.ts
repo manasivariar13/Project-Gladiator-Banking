@@ -28,7 +28,7 @@ export class ForgotPasswordOtpComponent {
         this.spinnerService.hide();
         if (response.otp) {
           this.otpIsCorrect = true;
-          this.router.navigate(['/set-new-password']);
+          this.router.navigate(['/login']);
         }
         else
           this.otpIsCorrect = false;

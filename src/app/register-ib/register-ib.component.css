@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 body {
     font: 14px sans-serif;
-    background-color: #d3dbe0;
+    background-color: #f9f9f9;
 }
 
 .wrapper {
     width: 500px;
-    background-image: linear-gradient(to bottom right, #be8b9c, #d13f70, #a73259);
-    border: .2rem solid black;
+    background-image: white;
+    border: .2rem;
     margin-top: 10px;
     margin-bottom: 20px;
     border-radius: 10px;

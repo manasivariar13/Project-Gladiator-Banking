@@ -9,7 +9,7 @@ import { Component } from '@angular/core';
 })
 export class TrackApplicationComponent {
 
-  serviceRefNo: number;
+  custId: number;
   status: string;
   submitted: boolean;
   statusMessage: string;
@@ -19,11 +19,11 @@ export class TrackApplicationComponent {
 
   checkApplicationStatus() {
     this.spinnerService.show();
-    this.trackApplicationService.getApplicationStatus(this.serviceRefNo).subscribe(response => {
+    this.trackApplicationService.getApplicationStatus(this.custId).subscribe(response => {
       if (response.statusCode === "SUCCESS") {
         this.spinnerService.hide();
         this.submitted = true;
-        this.status = response.currentStatus;
+        this.status = response.accountStatus;
       }
       else {
         this.spinnerService.hide();

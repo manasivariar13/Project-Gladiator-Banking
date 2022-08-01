@@ -57,10 +57,5 @@ export function MustMatch(controlName: string, matchingControlName: string, txNa
             if (!controlName) {
                 return null;
             }
-            /*const regex = new RegExp('(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}');
-            console.log("Here1")
-            const valid = regex.test(controlName);
-            console.log("Here")
-            return valid ? null : { shouldMatch: true };*/
         }
     }

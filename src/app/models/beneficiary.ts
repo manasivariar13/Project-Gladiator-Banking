@@ -1,6 +1,6 @@
 export class Beneficiary {
-    public userId:number;
+    // public userId:number;
+    public customerAccountNumber: number;
     public beneficiaryName: string;
-    public accountNumber: number;
-    public beneficiaryNickName: string;
+    public beneficiaryAccount: number;
 }

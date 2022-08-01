@@ -1,7 +1,8 @@
 <div class="header" >
-    <a href="#">MPSAS Bank</a>
+    <a href="#" style="float: right;">MPSAS Bank</a>
     <div style="float: center;">
         <a href="#" routerLink="/home" >Home</a>
+        <a href="#" routerLink="/login">Customer Login</a>
         <a href="#" routerLink="/register-ib">Register for Internet Banking</a>
         <a href="#" routerLink="/open-acc">Apply for Account</a>
         <a href="#" routerLink="/admin-login">Admin Login</a>
@@ -31,11 +32,11 @@
     <div class="alert alert-danger" *ngIf="error">{{message}}</div>
     <form class="form" name="form" (ngSubmit)="f.form.valid && onSubmit()" [appMustMatch]="['userPassword', 'cuserPassword' ,'txPassword', 'ctxPassword']" #f="ngForm">
         <div class="form-group">
-            <label> User ID</label>
+            <label> Account Number</label>
             <input input type="number" class="form-control" name="userId"
-           [(ngModel)]="model.userId"
+           [(ngModel)]="model.accountNumber"
             #userId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userId.invalid }"
-            required placeholder="Your User Id" minlength="7" maxlength="7">
+            required placeholder="Your Account Number" minlength="7" maxlength="7">
             <div *ngIf="f.submitted && userId.invalid" class="invalid-feedback">
                 <div *ngIf="userId.errors.required">Account Number is required</div>
                 <div *ngIf="userId.errors.minlength || userId.errors.maxlength">Enter Valid Account Number</div>
@@ -44,7 +45,7 @@
         <div class="form-group">
             <label> Set Login Password </label>
             <input class="form-control" type="password" name="userPassword" 
-            placeholder="Enter Password" [(ngModel)]="model.userPassword" #userPassword="ngModel"
+            placeholder="Enter Password" [(ngModel)]="model.loginPassword" #userPassword="ngModel"
             [ngClass]="{ 'is-invalid': f.submitted && userPassword.invalid }" required minlength="8"
             pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}">
             <p class="font-italic"><small>*Atleast 8 characters long with UpperCase ,LowerCase ,digit ,special characters</small></p>
@@ -84,23 +85,11 @@
                 <div *ngIf="ctxPassword.errors.mustMatch">Passwords must match</div>
             </div>
         </div>
-        <div class="form-group row">
-            <label class="col-sm-4"> Enter OTP<span style="color:red">*</span></label>
-            <div class="col-sm-8">
-              <input class="form-control" type="text" name="otp" placeholder="Enter  OTP" 
-                [(ngModel)]="model.otp" #otp="ngModel" required minlength="4">
-             <div *ngIf="f.submitted && otp.invalid" class="invalid-feedback">  
-               <div *ngIf="otp.errors.minlength">OTP should of 4 digits</div> 
-              </div>
-              <button class="btn btn-link" (click)="onClick($event)"style="color: #5e0422ee ;">Generate otp</button>
-              
-            </div>
-          </div>
 
-        <button type="submit" class="btn btn-primary" style="width: 100%; background: black;border: white;">SUBMIT</button>
+        <button type="submit" class="btn btn-primary" style="width: 100%; background: linear-gradient(to right, #861F41, #e06890);border: white;">SUBMIT</button>
     </form>
     <div class="forgot-options">
-        <p>Already have an account? <a href="#" routerLink="/home" style="color: #5e0422ee ;">Click here</a> to Login</p>
+        <p>Already have an account? <a href="#" routerLink="/home" style="color: #0000EE ;">Click here</a> to Login</p>
     </div>
 </div>
 <ngx-spinner bdColor="rgba(51, 51, 51, 0.8)" size="default" type="ball-scale-multiple">  

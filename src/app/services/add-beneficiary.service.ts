@@ -12,7 +12,7 @@ export class AddBeneficiaryService {
   constructor(private http:HttpClient) { }
 
   addBeneficiary(beneficiary:Beneficiary):Observable<AddBeneficiaryStatus>{
-    return this.http.post<AddBeneficiaryStatus>('http://localhost:9090/add-beneficiary',beneficiary);
+    return this.http.post<AddBeneficiaryStatus>('http://localhost:9090/api/addBeneficiary',beneficiary);
   }
 
 

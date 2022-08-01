@@ -10,8 +10,8 @@ export class TrackApplicationService {
 
   constructor(private http: HttpClient) { }
 
-  getApplicationStatus(serviceRefNo: any): Observable<TrackApplicationStatus>{
-    let url="http://localhost:9090/track-application?serviceRefNo="+serviceRefNo;
+  getApplicationStatus(custId: number): Observable<TrackApplicationStatus>{
+    let url="http://localhost:9090/api/trackApplication/"+custId;
     return this.http.get<TrackApplicationStatus>(url);
   }
 }

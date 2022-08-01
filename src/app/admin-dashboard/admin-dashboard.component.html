@@ -1,12 +1,12 @@
 <div class="header">
-  <a routerLink="/home">HFDC Bank</a>
+  <a routerLink="/home">MPSAS Bank</a>
   <a>Welcome, {{name | uppercase}}</a>
   <div style="float: right;">
     <a routerLink="/logout">Logout</a>
   </div>
 </div>
 <br>
-<div>
+<div class="button-grp">
   <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="showPendingRequests()">Show Pending
     Requests</button>
   <button type="button" class="btn btn-secondary btn-lg btn-block" (click)="showApprovalForm()">Approve Pending Requests</button>
@@ -15,25 +15,25 @@
 <div *ngIf="showApprovalToggle" class="wrapper container" style="width: 20%;">
   <p class="h3">Admin Approval</p>
   <br>
-  <form (ngSubmit)="approvalForm.valid && approve()" #approvalForm="ngForm">
+  <form (ngSubmit)= "approve()" #approvalForm="ngForm">
     <div class="form-group">
-      <label for="refNo">Service Reference No.</label>
-      <select [(ngModel)]="adminApproval.serviceRefNo" class="form-control" name="refNo" #refNo="ngModel"
-        [ngClass]="{ 'is-invalid': approvalForm.submitted && refNo.invalid }" required>
-        <option *ngFor="let customer of customerRequestStatus.customers" value="{{customer.serviceRefNo}}">
-          {{customer.serviceRefNo}}
+      <label for="refNo">Customer ID</label>
+      <select [(ngModel)]="adminApproval.custId" class="form-control" name="refNo" #refNo="ngModel"
+        [ngClass]="{ 'is-invalid': approvalForm.submitted}" required>
+        <option *ngFor="let customer of customerRequestStatus.customers" value="{{customer.custId}}">
+          {{customer.custId}}
         </option>
       </select>
-      <div class="invalid-feedback" *ngIf="approvalForm.submitted && refNo.invalid && (refNo.dirty || refNo.touched)">
-        <div *ngIf="refNo.errors.required">Service Reference No. is required</div>
-      </div>
+      <!-- <div class="invalid-feedback" *ngIf="approvalForm.submitted && refNo.invalid && (refNo.dirty || refNo.touched)">
+        <div *ngIf="refNo.errors.required">Customer ID is required</div>
+      </div> -->
     </div>
     <div class="form-group">
-      <label for="response">Accept(A) / Reject(R)</label>
-      <select [(ngModel)]="adminApproval.response" class="form-control" name="response" #response="ngModel"
+      <label for="response">Approve / Reject</label>
+      <select [(ngModel)]="adminApproval.accountStatus" class="form-control" name="response" #response="ngModel"
         [ngClass]="{ 'is-invalid': approvalForm.submitted && response.invalid }" required>
-        <option value="A">A</option>
-        <option value="R">R</option>
+        <option value="Approved">Approve</option>
+        <option value="Rejected">Reject</option>
       </select>
       <div class="invalid-feedback"
         *ngIf="approvalForm.submitted && response.invalid && (response.dirty || response.touched)">
@@ -51,39 +51,37 @@
   <br>
   <form (ngSubmit)="f.valid && search()" #f="ngForm">
     <div class="form-group">
-      <label>Service Reference No.</label>
-      <input class="form-control" type="text" name="refNo1" [(ngModel)]="serviceReferenceNumber" #refNo1="ngModel"
-        [ngClass]="{ 'is-invalid': f.submitted && refNo1.invalid }" required pattern="^[0-9]{4}$">
+      <label>Customer ID</label>
+      <input class="form-control" type="text" name="refNo1" [(ngModel)]="custId" #refNo1="ngModel"
+        [ngClass]="{ 'is-invalid': f.submitted && refNo1.invalid }" required>
       <div class="invalid-feedback" *ngIf="f.submitted && refNo1.invalid && (refNo1.dirty || refNo1.touched)">
-        <div *ngIf="refNo1.errors.required">Service Reference No. is required</div>
-        <div *ngIf="refNo1.errors.pattern">Service Reference No. must be of 4 digits</div>
+        <div *ngIf="refNo1.errors.required">Customer ID is required</div>
+        <div *ngIf="refNo1.errors.pattern">Customer ID must be of 3 digits</div>
       </div>
     </div>
     <div class="form-group">
       <input type="submit" class="btn btn-primary" value="Search" style="width: 100%;">
     </div>
   </form>
-  <div class="alert alert-danger" *ngIf="wrongServicerefNo">Wrong Service Ref No.</div>
+  <div class="alert alert-danger" *ngIf="wrongServicerefNo">Wrong Customer ID</div>
   <div class="alert alert-danger" *ngIf="searchError">Unable to search</div>
 </div>
 <div *ngIf="searched && showSearchToggle" class="card border-dark mb-3 mx-auto" style="max-width: 40rem; margin-top: 20px;">
-  <div class="card-header">{{generatedCustomer.customer.firstName}}'s Details</div>
+  <div class="card-header">{{generatedCustomer.customer.name}}'s Details</div>
   <div class="card-body">
-    <p class="card-text">Service Reference Number: {{generatedCustomer.customer.serviceRefNo}}</p>
-    <p class="card-text">First Name: {{generatedCustomer.customer.firstName}}</p>
-    <p class="card-text">Middle Name: {{generatedCustomer.customer.middleName}}</p>
-    <p class="card-text">Last Name: {{generatedCustomer.customer.lastName}}</p>
-    <p class="card-text">Father's Name: {{generatedCustomer.customer.fatherName}}</p>
+    <p class="card-text">Customer ID: {{generatedCustomer.customer.custId}}</p>
+    <p class="card-text">Name: {{generatedCustomer.customer.name}}</p>
     <p class="card-text">Mobile Number: {{generatedCustomer.customer.mobileNo}}</p>
     <p class="card-text">Email ID: {{generatedCustomer.customer.emailId}}</p>
     <p class="card-text">Aadhaar Number: {{generatedCustomer.customer.aadhaarNo}}</p>
     <p class="card-text">Date of Birth: {{generatedCustomer.customer.dateOfBirth}}</p>
     <p class="card-text">Occupation: {{generatedCustomer.customer.occupationType}}</p>
-    <p class="card-text">Source of Income: {{generatedCustomer.customer.sourceOfIncome}}</p>
-    <p class="card-text">Gross Annual Income: {{generatedCustomer.customer.grossAnnualIncome}}</p>
-    <p class="card-text">Net Banking Required: {{generatedCustomer.customer.netBankingRequirement}}</p>
-    <p class="card-text">Debit Card Required: {{generatedCustomer.customer.debitCardRequirement}}</p>
-    <p class="card-text">Is Approved: {{generatedCustomer.customer.isApproved}}</p>
+    <p class="card-text">Source of Income: {{generatedCustomer.customer.incomeSource}}</p>
+    <p class="card-text">Gross Annual Income: {{generatedCustomer.customer.grossIncome}}</p>
+    <!-- <p class="card-text">Net Banking Required: {{generatedCustomer.customer.netBankingRequirement}}</p> -->
+    <!-- <p class="card-text">Debit Card Required: {{generatedCustomer.customer.debitCardRequirement}}</p> -->
+    <p class="card-text">Account Type: {{generatedCustomer.customer.accountType}}</p>
+    <p class="card-text">Account Status: {{generatedCustomer.customer.accountStatus}}</p>
   </div>
 </div>
 <div class="scrollme" *ngIf="requestsToggle">
@@ -91,17 +89,14 @@
     <thead style="background-color: #adb0c5;">
       <tr>
         <th scope="col">#</th>
-        <th scope="col">Service Reference No</th>
-        <th scope="col">Title</th>
-        <th scope="col">First Name</th>
-        <th scope="col">Middle Name</th>
-        <th scope="col">Last Name</th>
-        <th scope="col">Father's Name</th>
+        <th scope="col">Customer ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Gender</th>
         <th scope="col">Mobile Number</th>
         <th scope="col">Email ID</th>
         <th scope="col">Aadhaar Card Number</th>
         <th scope="col">Date of Birth</th>
-        <th scope="col">Occupation</th>
+        <th scope="col">Occupation Type</th>
         <th scope="col">Source of Income</th>
         <th scope="col">Gross Annual Income</th>
         <th scope="col">Address Line 1</th>
@@ -110,40 +105,27 @@
         <th scope="col">State</th>
         <th scope="col">City</th>
         <th scope="col">Pincode</th>
-        <th scope="col">Internet Banking Requirement</th>
-        <th scope="col">Debit Card Requirement</th>
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let customer of customerRequestStatus.customers; let i = index">
         <th scope="row">{{i + 1}}</th>
-        <td>{{customer.serviceRefNo}}</td>
-        <td>{{customer.title}}</td>
-        <td>{{customer.firstName}}</td>
-        <td>{{customer.middleName}}</td>
-        <td>{{customer.lastName}}</td>
-        <td>{{customer.fatherName}}</td>
+        <td>{{customer.custId}}</td>
+        <td>{{customer.name}}</td>
+        <td>{{customer.gender}}</td>
         <td>{{customer.mobileNo}}</td>
         <td>{{customer.emailId}}</td>
         <td>{{customer.aadhaarNo}}</td>
         <td>{{customer.dateOfBirth}}</td>
         <td>{{customer.occupationType}}</td>
-        <td>{{customer.sourceOfIncome}}</td>
-        <td>{{customer.grossAnnualIncome}}</td>
-        <td>{{customer.perAddress.addressLine1}}</td>
-        <td>{{customer.perAddress.addressLine2}}</td>
-        <td>{{customer.perAddress.landmark}}</td>
-        <td>{{customer.perAddress.state}}</td>
-        <td>{{customer.perAddress.city}}</td>
-        <td>{{customer.perAddress.pincode}}</td>
-        <td>
-          <span *ngIf="customer.netBankingRequirement === 'Y'; else netBankingNotRequired">Yes</span>
-          <ng-template #netBankingNotRequired>No</ng-template>
-        </td>
-        <td>
-          <span *ngIf="customer.debitCardRequirement === 'Y'; else netBankingNotRequired">Yes</span>
-          <ng-template #debitCardNotRequired>No</ng-template>
-        </td>
+        <td>{{customer.incomeSource}}</td>
+        <td>{{customer.grossIncome}}</td>
+        <td>{{customer.addressLine1}}</td>
+        <td>{{customer.addressLine2}}</td>
+        <td>{{customer.landmark}}</td>
+        <td>{{customer.state}}</td>
+        <td>{{customer.city}}</td>
+        <td>{{customer.pincode}}</td>
       </tr>
     </tbody>
   </table>
