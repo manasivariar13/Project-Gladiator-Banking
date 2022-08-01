@@ -36,6 +36,7 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { MatchingDirective } from './matching.directive';
+import { DocumentComponent } from './document/document.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { MatchingDirective } from './matching.directive';
     AboutUsComponent,
     ContactUsComponent,
     TermsAndConditionsComponent,
-    MatchingDirective
+    MatchingDirective,
+    DocumentComponent
   ],
   imports: [
     BrowserModule,

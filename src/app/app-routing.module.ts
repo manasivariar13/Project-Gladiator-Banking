@@ -26,6 +26,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
 import { EnterOtpComponent } from './enter-otp/enter-otp.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ForgotPasswordOtpComponent } from './forgot-password-otp/forgot-password-otp.component';
+import { DocumentComponent } from './document/document.component';
 
 
 const routes: Routes = [
@@ -55,7 +56,8 @@ const routes: Routes = [
   { path: 'forgot-password-otp', component: ForgotPasswordOtpComponent },
   { path: 'about-us', component: AboutUsComponent },
   { path: 'contact-us', component: ContactUsComponent },
-  { path: 'terms-and-conditions', component: TermsAndConditionsComponent }
+  { path: 'terms-and-conditions', component: TermsAndConditionsComponent },
+  {path:'document',component:DocumentComponent}
 ];
 
 @NgModule({

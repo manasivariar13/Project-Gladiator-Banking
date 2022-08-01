@@ -90,4 +90,10 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
+  public handleClick() {
+    //this.id = item.UserId;
+    this.router.navigate(['document']);
+    console.log("incitive method")
+  }
+
 }
