@@ -28,20 +28,9 @@ export class AccountStatementComponent implements OnInit {
   constructor(private service:AccountStatementService , private accountService: AccountService) { }
 
   ngOnInit(): void {
-    // this.statementDuration.userId=parseInt(sessionStorage.getItem('userId'));
-    // this.accountService.showAccountSummary(this.userId).subscribe(response => {
-    //   if (response.statusCode === "SUCCESS") {
-    //     this.accountSummaryStatus.accountNumber = response.accountNumber;
-    //     this.accountSummaryStatus.balance = response.balance;
-    //   }
-    //   else {
-    //     this.error = true;
-    //     this.message = response.statusMessage;
-    //   }
-    // })
-
-    
   }
+
+  
   accountStatement(){
     this.statementDuration.accountNumber = parseInt(sessionStorage.getItem('accountNumber'));
     this.service.fetchStatement(this.statementDuration).subscribe(data =>{

@@ -18,9 +18,10 @@ export class AdminLoginComponent {
   constructor(private adminService: AdminService, private router: Router, private spinnerService: NgxSpinnerService) { }
 
   loginCheck() {
-    this.router.navigate(['admin-dashboard']);
     this.spinnerService.show();
+    console.log(this.adminLogin);
     this.adminService.login(this.adminLogin).subscribe(response => {
+      console.log(response);
       if (response.statusCode === "SUCCESS") {
         sessionStorage.setItem('adminId', String(response.adminId));
         sessionStorage.setItem('adminName', response.name);

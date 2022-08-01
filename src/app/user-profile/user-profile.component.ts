@@ -40,6 +40,7 @@ export class UserProfileComponent implements OnInit {
       }
     });
   }
+  
 
   openModal() {
     document.getElementById('openModalButton').click();

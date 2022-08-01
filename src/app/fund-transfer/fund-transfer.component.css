@@ -36,3 +36,7 @@ form {
 .form-control{
     color: black;
 }
+
+.btn-link {
+    float: right;
+}

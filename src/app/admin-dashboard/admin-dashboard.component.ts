@@ -20,7 +20,7 @@ export class AdminDashboardComponent implements OnInit {
   approvalMessage: string;
   customerRequestStatus: CustomerRequestStatus = new CustomerRequestStatus();
   adminApproval: AdminApproval = new AdminApproval();
-  serviceReferenceNumber: number;
+  custId: number;
   searchError: boolean;
   generatedCustomer: AdminSearchCustomerStatus = new AdminSearchCustomerStatus();
   wrongServicerefNo: boolean;
@@ -44,6 +44,7 @@ export class AdminDashboardComponent implements OnInit {
   showPendingRequests() {
     this.requestsToggle = !this.requestsToggle;
     this.adminService.showPendingRequests().subscribe(response => {
+      console.log(response);
       if (response.statusCode === "SUCCESS")
         this.customerRequestStatus.customers = response.customers;
       else {
@@ -75,7 +76,8 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   search() {
-    this.adminService.searchCustomerByServRefNo(this.serviceReferenceNumber).subscribe(response => {
+    this.adminService.searchCustomerById(this.custId).subscribe(response => {
+      console.log
       if (response.statusCode === "SUCCESS") {
         this.generatedCustomer.customer = response.customer;
         if (this.generatedCustomer.customer === null)

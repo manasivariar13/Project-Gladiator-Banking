@@ -84,7 +84,8 @@ export class FundTransferComponent implements OnInit {
   onSubmit(){
     // this.transaction.fromAccountNumber=parseInt(sessionStorage.getItem('accountNumber'));
     this.SpinnerService.show();
-    if(this.transaction.otp==this.otp){
+    console.log(this.transaction);
+    // if(this.transaction.otp==this.otp){
 
 
     this.transactionService.transfer(this.transaction).subscribe( data =>{
@@ -108,15 +109,14 @@ export class FundTransferComponent implements OnInit {
         this.SpinnerService.hide();
         sessionStorage.setItem('transactionStatus',data.statusCode);
         alert(data.statusMessage);
-
       }
     })
-  } 
+  // } 
     
-    else {
-      this.SpinnerService.hide();
-      alert("OTP is incorrect");
-    }
+    // else {
+    //   this.SpinnerService.hide();
+    //   alert("OTP is incorrect");
+    // }
   }
   showBeneficiary(){
     this.service.showBeneficiary(parseInt(sessionStorage.getItem('accountNumber'))).subscribe(data =>{
@@ -143,6 +143,8 @@ export class FundTransferComponent implements OnInit {
       }
     })
   }
+
+  
   
 
   goToAddBeneficiary($event:any){

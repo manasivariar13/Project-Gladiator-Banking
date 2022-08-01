@@ -1,4 +1,4 @@
 export class AdminApproval {
-    serviceRefNo: number;
-    response: string;
+    custId: number;
+    accountStatus: string;
 }
