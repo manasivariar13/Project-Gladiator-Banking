@@ -5,6 +5,7 @@ import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 import { Router } from '@angular/router';
 import { CompileShallowModuleMetadata } from '@angular/compiler';
+import { NgxSpinnerService } from 'ngx-spinner';
 //declare var jsPDF: any;
 @Component({
   selector: 'app-view-beneficiary',
@@ -20,7 +21,8 @@ export class ViewBeneficiaryComponent implements OnInit {
 
   constructor(
     private service: ViewBeneficiaryService,
-    private router: Router
+    private router: Router,
+    private spinnerService: NgxSpinnerService
   ) {}
 
   ngOnInit(): void {
@@ -66,13 +68,26 @@ export class ViewBeneficiaryComponent implements OnInit {
     // this.beneficiaryId = beneficiaryId;
     this.service.deleteBeneficiary(beneficiaryId).subscribe( (data) => {
       try {
-        this.statusMessage = data;
+        this.statusMessage = 'Something went wrong. Please try again later';
       } catch (error) {
         this.statusMessage = 'Beneficiary Deleted Successfully';
         this.showBeneficiary();
       }
+      document.getElementById('openModalButton').click();
+      this.spinnerService.show();
+      this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+      };
 
-    });
+    }, (error) => { 
+      this.statusMessage = 'Beneficiary deleted';
+      document.getElementById('openModalButton').click();
+      // this.spinnerService.hide();
+      this.router.routeReuseStrategy.shouldReuseRoute = function () {
+        return false;
+      };
+      this.showBeneficiary();
+    }, );
   }
 
   onDeleteClick(beneficiaryId: number) {
@@ -80,7 +95,18 @@ export class ViewBeneficiaryComponent implements OnInit {
     document.getElementById('deleteModalButton').click();
   }
 
-  onClick($event: any) {
-    this.router.navigate(['add-new-beneficiary']);
-  }
+  // load(val) {
+  //   if (val == this.router.url) {
+  //     this.spinnerService.show();
+  //     this.router.routeReuseStrategy.shouldReuseRoute = function () {
+  //       return false;
+  //     };
+  //    }
+  //   }
+
+  // onClick($event: any) {
+  //   this.router.routeReuseStrategy.shouldReuseRoute = function () {
+  //     return false;
+  //   };
+  // }
 }

@@ -16,6 +16,13 @@
     line-height: 25px;
 }
 
+pdf-viewer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    filter: drop-shadow(5px 5px 5px #222222);
+  }
+
 .header a:hover {
     opacity: 60%;
 }
@@ -29,6 +36,7 @@
 }
 
 .btn {
+    justify-self: center;
     width: 75%;
     background-image: linear-gradient(to right, #861F41, #e06890);
 }

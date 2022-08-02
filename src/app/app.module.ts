@@ -37,6 +37,8 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-conditions.component';
 import { MatchingDirective } from './matching.directive';
 import { DocumentComponent } from './document/document.component';
+import { AngularFileViewerModule } from '@taldor-ltd/angular-file-viewer';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -75,9 +77,11 @@ import { DocumentComponent } from './document/document.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    AngularFileViewerModule,
     FormsModule,
     HttpClientModule,
     NgxSpinnerModule,
+    PdfViewerModule,
     BackButtonDisableModule.forRoot({
       preserveScrollPosition: true
     })

@@ -36,8 +36,9 @@
             <input input type="number" class="form-control" name="userId"
            [(ngModel)]="model.accountNumber"
             #userId="ngModel" [ngClass]="{ 'is-invalid': f.submitted && userId.invalid }"
-            required placeholder="Your Account Number" minlength="7" maxlength="7">
-            <div *ngIf="f.submitted && userId.invalid" class="invalid-feedback">
+            required placeholder="Your Account Number" minlength="6" maxlength="6">
+            <div *ngIf="f.submitted && userId.invalid" class="invalid-feedback" required
+            pattern="^[0$-9]{6}">
                 <div *ngIf="userId.errors.required">Account Number is required</div>
                 <div *ngIf="userId.errors.minlength || userId.errors.maxlength">Enter Valid Account Number</div>
             </div>
@@ -49,7 +50,8 @@
             [ngClass]="{ 'is-invalid': f.submitted && userPassword.invalid }" required minlength="8"
             pattern="(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}">
             <p class="font-italic"><small>*Atleast 8 characters long with UpperCase ,LowerCase ,digit ,special characters</small></p>
-            <div *ngIf="f.submitted && userPassword.invalid" class="invalid-feedback">
+            <div *ngIf="f.submitted && userPassword.invalid" class="invalid-feedback" required
+            pattern="^[0$-9]{3}">
                 <div *ngIf="userPassword.errors.required">Password is required</div>
                 <div *ngIf="userPassword.errors.minlength">Password must be at least 8 characters</div>
                 <div *ngIf="userPassword.errors.pattern">Password pattern is not valid</div>
@@ -69,7 +71,8 @@
             <label> Set Transaction Password</label>
             <input class="form-control" type="password" name="txPassword" 
             placeholder="Enter Password" [(ngModel)]="model.transactionPassword" #txPassword="ngModel"
-            [ngClass]="{ 'is-invalid': f.submitted && txPassword.invalid }" required minlength="4">
+            [ngClass]="{ 'is-invalid': f.submitted && txPassword.invalid }" required
+            pattern="^[0$-9]{4,}" required minlength="4">
             <div *ngIf="f.submitted && txPassword.invalid" class="invalid-feedback">
                 <div *ngIf="txPassword.errors.required">Password is required</div>
                 <div *ngIf="txPassword.errors.minlength">Password must be at least 4 characters</div>

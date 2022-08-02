@@ -58,3 +58,13 @@ h3{
 .form-control {
   border: 1px solid black;
 }
+
+p {
+  float: right;
+}
+
+button {
+  background-image: linear-gradient(to right, #e06890,#861F41);
+  color: white;
+  border: .2rem ;
+}

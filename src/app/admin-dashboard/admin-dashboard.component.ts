@@ -5,6 +5,7 @@ import { AdminService } from './../services/admin.service';
 import { Component, OnInit } from '@angular/core';
 import { CustomerRequestStatus } from '../models/customer-request-status';
 import { BnNgIdleService } from 'bn-ng-idle';
+import { AngularFileViewerModule } from '@taldor-ltd/angular-file-viewer';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -28,6 +29,7 @@ export class AdminDashboardComponent implements OnInit {
   requestsToggle: boolean;
   showApprovalToggle: boolean;
   showSearchToggle: boolean;
+  pdfSource: string;
 
   constructor(private adminService: AdminService, private router: Router, private bnIdle: BnNgIdleService) {
     this.bnIdle.startWatching(600).subscribe((res) => {
@@ -90,10 +92,17 @@ export class AdminDashboardComponent implements OnInit {
     })
   }
 
-  public handleClick() {
+  public handleClickAadhar(aadharFile: string) {
+    this.pdfSource = "assets/uploads/" + aadharFile;
+    document.getElementById('openModalButton').click();
     //this.id = item.UserId;
-    this.router.navigate(['document']);
-    console.log("incitive method")
+    // this.router.navigate(['document']);
+    // console.log("incitive method")
+  }
+
+  public handleClickPan(panFile: string) {
+    this.pdfSource = "assets/uploads/" + panFile;
+    document.getElementById('openModalButton').click();
   }
 
 }

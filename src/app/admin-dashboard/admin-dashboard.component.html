@@ -1,3 +1,27 @@
+<button id="openModalButton" [hidden]="true" data-toggle="modal" data-target="#myModal">Open Modal</button>
+<div id="myModal" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+  
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Status</h4>
+        </div>
+        <div class="container">
+          <!-- <tld-file-viewer [src]="pdfSource" [type]="type"></tld-file-viewer> -->
+          <pdf-viewer [src]="pdfSource"
+                      [original-size]="false"></pdf-viewer>
+        </div>
+        
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+
+
 <div class="header">
   <a routerLink="/home">MPSAS Bank</a>
   <a>Welcome, {{name | uppercase}}</a>
@@ -82,8 +106,8 @@
     <!-- <p class="card-text">Debit Card Required: {{generatedCustomer.customer.debitCardRequirement}}</p> -->
     <p class="card-text">Account Type: {{generatedCustomer.customer.accountType}}</p>
     <p class="card-text">Account Status: {{generatedCustomer.customer.accountStatus}}</p>
-    <p class="card-text">Aadhar Card File: {{generatedCustomer.customer.aadharFile}}</p>
-    <p class="card-text">Pan Card File: {{generatedCustomer.customer.panFile}}</p>
+    <!-- <p class="card-text">Aadhar Card File: {{generatedCustomer.customer.aadharFile}}</p>
+    <p class="card-text">Pan Card File: {{generatedCustomer.customer.panFile}}</p> -->
   </div>
 </div>
 <div class="scrollme" *ngIf="requestsToggle">
@@ -130,10 +154,10 @@
         <td>{{customer.state}}</td>
         <td>{{customer.city}}</td>
         <td>{{customer.pincode}}</td>
-        <td><button (click)="handleClick()" class="btn btn-danger btn-lg">
+        <td><button (click)="handleClickAadhar(customer.aadharFileName)" class="btn btn-danger btn-lg">
           View
         </button></td>
-        <td><button (click)="handleClick()" class="btn btn-danger btn-lg">
+        <td><button (click)="handleClickPan(customer.panFileName)" class="btn btn-danger btn-lg">
           View
         </button></td>
       </tr>

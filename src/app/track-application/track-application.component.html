@@ -15,8 +15,8 @@
                 pattern="^[0$-9]{3}">
             <div class="invalid-feedback"
                 *ngIf="trackApplicationForm.submitted && refNo.invalid && (refNo.dirty || refNo.touched)">
-                <div *ngIf="refNo.errors.required">Service reference number is required</div>
-                <div *ngIf="refNo.errors.pattern">Invalid service reference number</div>
+                <div *ngIf="refNo.errors.required">Customer ID is required</div>
+                <div *ngIf="refNo.errors.pattern">Invalid Customer ID</div>
             </div>
         </div>
         <div class="form-group">
